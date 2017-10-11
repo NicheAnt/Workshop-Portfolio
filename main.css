@@ -63,19 +63,22 @@ body {
 	src: url(font/Hind-Bold.ttf);
 }
 h1 {
-	font-family: "hind_bold";
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 24px;
-	color: grey;
+	color: white;
+	letter-spacing: 0.15vw;
+	font-size: 1.5vw;
+	line-height: normal;
+}
+a {
+	text-decoration: none;
 }
 
+/*header: logo and main menu*/
 header {
-	height: 12vh;
-	width: 100%;
+	height: 15vh;
+	width: 90vw;
 	position: fixed;
 	top: 0;
+	left: 5vw;
 	z-index: 2;
 	background-color: white;
 }
@@ -83,104 +86,100 @@ header .logo {
 	display: inline-block;
 	width: 10vw;
 	float: left;
-	padding-right: 1vw;
 }
 .logo img{
 	height: 10vh;
 	width: auto;
-	padding: 1vh 3vh;
+	padding: 1vh 0;
 }
 
-nav {
-	display: inline-block;
-	width: 85vw;
+/*main menu icon*/
+.menu {
+	top: 0;
+}
+.menu_icon {
 	float: right;
+	padding: 3vh;
+	height: 6vh;
+	width: auto;
+}
+.menu_icon img {
+	height: 100%;
+	width: auto;
+}
+
+/*horizontal navbar basics*/
+.horizmenu {
+	display: inline-block;
+	width: 100%;
 	position: relative;
-	text-align: right;
-	padding-right: 2vw;
+	text-align: center;
 }
-nav ul li {
+.horizmenu ul li {
 	display: inline;
-	padding-left: 2vw;
 }
-nav ul li a {
+.horizmenu ul li a {
 	text-decoration: none;
-	font-family: "hind";
 	letter-spacing: 0.2vw;
 	font-size: 1.35vw;
 	padding-top: 0.5vh;
 	transition: padding 0.5s;
-	color: #c4cfd0;
-}
-
-.menu {
-	top: 7vh;
-}
-.menu ul li:last-child {
-	padding-right: 4vw;
+	color: #EDCB64;
 }
 
 .submenu {
 	display: none;
-	top: 9vh;
+	top: 0;
 }
 .submenu ul li {
-	padding-left: 1vw;
-}
-.submenu ul li:last-child {
-	padding-right: 2vw;
+	padding: 0 3vw;
 }
 .submenu ul li a {
 	letter-spacing: 0.15vw;
-	font-size: 1vw;
+	font-size: 1.5vw;
 }
 
 .subsubmenu {
+	top: 3vh;
+}
+.subsubmenu .arch, .subsubmenu .design, .subsubmenu .film {
 	display: none;
-	top: 10vh;
 }
 .subsubmenu ul li {
-	padding-left: 0.6vw;
+	padding: 0 1vw;
 }
 .subsubmenu ul li a {
 	letter-spacing: 0.1vw;
-	font-size: 0.8vw;
+	font-size: 1vw;
 }
 
-.grid {
+/*project thumb grid, masonry*/
+#grid {
 	z-index: 1;
 	position: absolute;
-	top: 12vh;
+	top: 15vh;
+	left: 10vw;
+	width: 80vw;
 	background-color: white;
 }
-.content {
-	position: relative;
-	top: 0;
-	overflow-y: visible;
-}
-.col1, .col2, .col3, .col4 {
-	width: 24vw;
+#grid .item, .grid-sizer {
+	margin-bottom: 1vh;
 	float: left;
-	padding-right: 0.5vw;
+	width: 33.33%;
 }
-.col1 {
-	padding-left: 0.75vw;
+#grid .item img {
+	width: 97%;
+	height: auto;
+	padding: 0 1.5%;
 }
-.col4 {
-	padding-right: 0;
-}
-.grid figure {
+#grid .item_hidden {
+	position: absolute;
 	width: 100%;
-	height: 30vh;
-	background-color: ##dee1d0;
-	margin: 0.5vw;
+	top: 15%;
 	text-align: center;
+	opacity: 0;
+	transition: opacity 2s;
 }
-.grid figure img {
-	padding-top: 2vw;
-	width: 30%;
-	height: 50%;
-}
-.grid figure figcaption {
-
+#grid .item_visible {
+	transition: filter 2s;
 }
