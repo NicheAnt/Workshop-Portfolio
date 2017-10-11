@@ -54,7 +54,7 @@ $(document).ready(function() {//enabling js after page loads
     $('.submenu').css('display','inline-block');
     $('.subsubmenu .'+chosen_project_category).css('display','inline-block');
     //remove, then add, highlights
-    $('.horizmenu a').css('color','#EDCB64');
+    $('.horizmenu a').css('color','grey');
     $('.submenu .'+chosen_project_category).css('color','black');
     $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
 
@@ -70,7 +70,7 @@ $(document).ready(function() {//enabling js after page loads
     $('.subsubmenu').children().css('display','none');
     $('.subsubmenu .'+chosen_project_category).css('display','inline-block');
     //remove, then add, highlights
-    $('.horizmenu a').css('color','#EDCB64');
+    $('.horizmenu a').css('color','grey');
     $('.submenu .'+chosen_project_category).css('color','black');
     $('.subsubmenu .all').css('color','black');
     //remove all items from grid
@@ -89,7 +89,7 @@ $(document).ready(function() {//enabling js after page loads
     grid_view=true;
     chosen_project_subcategory = $(this).attr('class');
     //remove, then add, highlights
-    $('.subsubmenu a').css('color','#EDCB64');
+    $('.subsubmenu a').css('color','grey');//#EDCB64 for yellow
     $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
     //remove all items from grid
     $('.item').hide();
