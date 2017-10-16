@@ -47,6 +47,7 @@ $(document).ready(function() {//enabling js after page loads
     $(this).siblings().hide();
     $(this).siblings().removeClass('item');
     //refresh layout
+    $('#grid').masonry('reloadItems');
     $('#grid').masonry('layout');
     //show submenus
     $('.submenu').css('display','inline-block');
