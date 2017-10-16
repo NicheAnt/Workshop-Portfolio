@@ -8,8 +8,6 @@ $(document).ready(function() {//enabling js after page loads
     // options
       itemSelector : '.item',
       columnWidth : '.grid-sizer',
-      resize: true,
-      horizontalOrder: true,
       percentPosition: true
     });
   });
