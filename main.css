@@ -170,8 +170,8 @@ header .logo {
 }
 #grid .item img {
 	width: 97.5%;
+	padding: 0 1.25% 0.9vh;
 	height: auto;
-	padding: 0 1.25% 1.5%;
 }
 #grid .item_hidden {
 	position: absolute;
