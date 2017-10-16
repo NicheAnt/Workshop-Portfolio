@@ -75,10 +75,10 @@ a {
 /*header: logo and main menu*/
 header {
 	height: 15vh;
-	width: 90vw;
+	width: 80vw;
 	position: fixed;
 	top: 0;
-	left: 5vw;
+	left: 10vw;
 	z-index: 2;
 	background-color: white;
 }
