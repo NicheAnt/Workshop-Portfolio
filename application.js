@@ -102,7 +102,7 @@ $(document).ready(function() {//enabling js after page loads
       $('#grid .'+chosen_project_subcategory).show();
     }
     //refresh layout
-    //$('#grid').masonry('reloadItems');
+    $('#grid').masonry('reloadItems');
     $('#grid').masonry('layout');
   });
 
