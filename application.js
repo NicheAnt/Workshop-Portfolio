@@ -12,16 +12,21 @@ $(document).ready(function() {//enabling js after page loads
     });
   });
 
+  //on item click; expand navigation, remove grid, load project
+  $('header').on('click', '.menu_icon', function() {
+
+  });
+
   //show tags on hover (only when in grid-view)
   $(".item").hover(function(){
     if(grid_view){
       $(this).find('.item_hidden').css("opacity", "1");
-      $(this).find('.item_visible').css('filter','contrast(20%)');
+      $(this).find('.item_visible').css('filter','contrast(100%)');
     }
     }, function(){
     if(grid_view){
       $(this).find('.item_hidden').css("opacity", "0");
-      $(this).find('.item_visible').css('filter','contrast(100%)');
+      $(this).find('.item_visible').css('filter','contrast(20%)');
     }
   });
 
@@ -64,6 +69,8 @@ $(document).ready(function() {//enabling js after page loads
   //selection in submenu
   $('.submenu').on('click', 'a', function() {
     grid_view=true;
+    $('.item_hidden').css("opacity", "0");
+    $('.item_visible').css('filter','contrast(20%)');
     chosen_project_category = $(this).attr('class');
     //hide all, then show correct subsubmenu
     $('.subsubmenu').children().css('display','none');
@@ -86,6 +93,8 @@ $(document).ready(function() {//enabling js after page loads
   //selection in subsubmenu
   $('.subsubmenu').on('click', 'a', function() {
     grid_view=true;
+    $('.item_hidden').css("opacity", "0");
+    $('.item_visible').css('filter','contrast(20%)');
     chosen_project_subcategory = $(this).attr('class');
     //remove, then add, highlights
     $('.subsubmenu a').css('color','grey');//#EDCB64 for yellow

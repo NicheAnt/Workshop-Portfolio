@@ -63,7 +63,7 @@ body {
 	src: url(font/Hind-Bold.ttf);
 }
 h1 {
-	color: white;
+	color: black;
 	letter-spacing: 0.15vw;
 	font-size: 1.5vw;
 	line-height: normal;
@@ -176,11 +176,14 @@ header .logo {
 #grid .item_hidden {
 	position: absolute;
 	width: 100%;
-	top: 15%;
+	bottom: 20%;
 	text-align: center;
+	padding: 1vh 0;
+	background-color: white;
 	opacity: 0;
 	transition: opacity 1s;
 }
 #grid .item_visible {
+	filter: contrast(20%);
 	transition: filter 1s;
 }
