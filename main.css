@@ -58,29 +58,37 @@ display: none;
 body {
   background-color: white;
 }
-@font-face {
-	font-family: hind_bold;
-	src: url(font/Hind-Bold.ttf);
-}
 h1 {
+	font-family: 'Montserrat';
+	font-weight: 700;
 	color: black;
 	letter-spacing: 0.15vw;
 	font-size: 1.5vw;
 	line-height: normal;
 }
 a {
+	font-family: 'Montserrat';
+	font-weight: 400;
 	text-decoration: none;
 }
-
+.pagewrap {
+	position: relative;
+	width: 90vw;
+	min-height: 180vh;
+	top: 0;
+	left: 5vw;
+	background-color: #f2f2f2;
+}
 /*header: logo and main menu*/
 header {
-	height: 15vh;
+	height: 24vh;
 	width: 80vw;
 	position: fixed;
 	top: 0;
 	left: 10vw;
+	padding-top: 5vh;
 	z-index: 2;
-	background-color: white;/*#82C3C7 turquoise*/
+	background-color: #f2f2f2;/*#82C3C7 turquoise*/
 }
 header .logo {
 	display: inline-block;
@@ -91,7 +99,7 @@ header .logo {
 .logo img{
 	height: 10vh;
 	width: auto;
-	padding: 1vh 0;
+	padding: 2vh 0.5vw 0;
 }
 
 /*main menu icon*/
@@ -100,9 +108,9 @@ header .logo {
 }
 .menu_icon {
 	float: right;
-	padding: 3vh 1vh;
+	padding: 2vw 1vh;
 	height: 6vh;
-	width: auto;
+	width: 5%;;
 }
 .menu_icon img {
 	height: 100%;
@@ -112,7 +120,6 @@ header .logo {
 /*horizontal navbar basics*/
 .horizmenu {
 	display: inline-block;
-	width: 100%;
 	position: relative;
 	text-align: center;
 }
@@ -125,23 +132,24 @@ header .logo {
 	font-size: 1.35vw;
 	padding-top: 0.5vh;
 	transition: padding 0.5s;
-	color: #EDCB64;
+	color: grey;
 }
 
 .submenu {
-	display: none;
-	top: 0;
+	width: 100%;
+	display: inline-block;
+	top: 2vh;
 }
 .submenu ul li {
 	padding: 0 3vw;
 }
 .submenu ul li a {
 	letter-spacing: 0.15vw;
-	font-size: 1.5vw;
+	font-size: 1.8vw;
 }
-
 .subsubmenu {
-	top: 3vh;
+	top: 5vh;
+	width: 100%;
 }
 .subsubmenu .arch, .subsubmenu .design, .subsubmenu .film {
 	display: none;
@@ -151,21 +159,20 @@ header .logo {
 }
 .subsubmenu ul li a {
 	letter-spacing: 0.1vw;
-	font-size: 1vw;
+	font-size: 1.2vw;
 }
 
 /*project thumb grid, masonry*/
 #grid {
 	z-index: 1;
 	position: absolute;
-	top: 15vh;
-	left: 10vw;
+	top: 30vh;
+	left: 5vw;
 	width: 80vw;
-	background-color: white;
+	background-color: #f2f2f2;
 }
 #grid .item, .grid-sizer {
-	margin-bottom: 0;
-	float: left;
+	margin: 0;
 	width: 33.33%;
 }
 #grid .item img {
@@ -179,7 +186,7 @@ header .logo {
 	bottom: 20%;
 	text-align: center;
 	padding: 1vh 0;
-	background-color: white;
+	background-color: #f2f2f2;
 	opacity: 0;
 	transition: opacity 1s;
 }

@@ -42,8 +42,8 @@ $(document).ready(function() {//enabling js after page loads
     $(this).find('.item_hidden').css("opacity", "0");
     $(this).find('.item_visible').css('filter','contrast(100%)');
     //pull down header
-    $('header').animate({height: '25vh'});
-    $('#grid').animate({top: '25vh'});
+    $('header').animate({height: '28vh'});
+    $('#grid').animate({top: '35vh'});
     //record the tags of chosen project (split index might get confused when classes are added & removed)
     chosen_project = $(this).attr('class').split(" ")[0];
     chosen_project_category = $(this).attr('class').split(" ")[1];
@@ -55,7 +55,7 @@ $(document).ready(function() {//enabling js after page loads
     $('#grid').masonry('reloadItems');
     $('#grid').masonry('layout');
     //show submenus
-    $('.submenu').css('display','inline-block');
+    //$('.submenu').css('display','inline-block');
     $('.subsubmenu .'+chosen_project_category).css('display','inline-block');
     //remove, then add, highlights
     $('.horizmenu a').css('color','grey');
@@ -68,6 +68,7 @@ $(document).ready(function() {//enabling js after page loads
 
   //selection in submenu
   $('.submenu').on('click', 'a', function() {
+    $('#grid').animate({top: '35vh'});
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(20%)');
@@ -92,6 +93,7 @@ $(document).ready(function() {//enabling js after page loads
 
   //selection in subsubmenu
   $('.subsubmenu').on('click', 'a', function() {
+    $('#grid').animate({top: '35vh'});
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(20%)');
