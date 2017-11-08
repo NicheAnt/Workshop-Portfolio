@@ -68,6 +68,7 @@ $(document).ready(function() {//enabling js after page loads
 
   //selection in submenu
   $('.submenu').on('click', 'a', function() {
+    $('header').animate({height: '28vh'});
     $('#grid').animate({top: '35vh'});
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
@@ -93,6 +94,7 @@ $(document).ready(function() {//enabling js after page loads
 
   //selection in subsubmenu
   $('.subsubmenu').on('click', 'a', function() {
+    $('header').animate({height: '28vh'});
     $('#grid').animate({top: '35vh'});
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
