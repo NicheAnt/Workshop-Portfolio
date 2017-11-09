@@ -315,3 +315,30 @@ header .logo {
 	filter: contrast(50%);
 	transition: filter 1s;
 }
+
+.loader {
+	z-index: 5;
+	position: fixed;
+	left: 46.5vw;
+	top: 35vh;
+	border: 1vw solid #f3f3f3; /* Light grey */
+	border-top: 1vw solid black;
+	border-radius: 50%;
+	width: 5vw;
+	height: 5vw;
+	animation: spin 2s linear infinite;
+}
+@media only screen and (min-aspect-ratio:16/10){
+	.loader {
+		top: 45vh;
+		left: 48.5vw;
+		border: 0.5vw solid #f3f3f3; /* Light grey */
+		border-top: 0.5vw solid black;
+		width: 3vw;
+		height: 3vw;
+	}
+}
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}

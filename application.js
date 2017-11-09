@@ -4,6 +4,7 @@ var mobile_view=true;
 //loading sequence for home-page: after everything loads
 window.onload = function() {
   $('#grid').fadeIn(1000);
+  $('.loader').fadeOut(1000);
   //refresh layout
   $('#grid').masonry('reloadItems');
   $('#grid').masonry('layout');
