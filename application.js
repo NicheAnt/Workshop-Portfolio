@@ -1,5 +1,6 @@
 var grid_view=true;
 var menu_view=false;
+var mobile_view=true;
 
 $(document).ready(function() {//enabling js after page loads
 
@@ -12,6 +13,10 @@ $(document).ready(function() {//enabling js after page loads
       percentPosition: true
     });
   });
+
+  var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
+  if(hhr>16) { mobile_view=false; }
+  //alert($("header").height()+', '+$(window).height()+', '+hhr);
 
   //open menu on click
   $('header').on('click', '.menu_icon', function() {
@@ -53,7 +58,7 @@ $(document).ready(function() {//enabling js after page loads
     }, function(){
     if(grid_view){
       $(this).find('.item_hidden').css("opacity", "0");
-      $(this).find('.item_visible').css('filter','contrast(20%)');
+      $(this).find('.item_visible').css('filter','contrast(50%)');
     }
   });
 
@@ -69,8 +74,14 @@ $(document).ready(function() {//enabling js after page loads
     $(this).find('.item_hidden').css("opacity", "0");
     $(this).find('.item_visible').css('filter','contrast(100%)');
     //pull down header
-    $('header').animate({height: '28vh'});
-    $('#grid').animate({top: '35vh'});
+    if(mobile_view){
+      $('header').animate({height: '18vh'});
+      $('#grid').animate({top: '22vh'});
+    }
+    else {
+      $('header').animate({height: '28vh'});
+      $('#grid').animate({top: '35vh'});
+    }
     //record the tags of chosen project (split index might get confused when classes are added & removed)
     chosen_project = $(this).attr('class').split(" ")[0];
     chosen_project_category = $(this).attr('class').split(" ")[1];
@@ -95,11 +106,18 @@ $(document).ready(function() {//enabling js after page loads
 
   //selection in submenu
   $('.submenu').on('click', 'a', function() {
-    $('header').animate({height: '28vh'});
-    $('#grid').animate({top: '35vh'});
+    //pull down header
+    if(mobile_view){
+      $('header').animate({height: '18vh'});
+      $('#grid').animate({top: '22vh'});
+    }
+    else {
+      $('header').animate({height: '28vh'});
+      $('#grid').animate({top: '35vh'});
+    }
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
-    $('.item_visible').css('filter','contrast(20%)');
+    $('.item_visible').css('filter','contrast(50%)');
     chosen_project_category = $(this).attr('class');
     //hide all, then show correct subsubmenu
     $('.subsubmenu').children().css('display','none');
@@ -121,11 +139,18 @@ $(document).ready(function() {//enabling js after page loads
 
   //selection in subsubmenu
   $('.subsubmenu').on('click', 'a', function() {
-    $('header').animate({height: '28vh'});
-    $('#grid').animate({top: '35vh'});
+    //pull down header
+    if(mobile_view){
+      $('header').animate({height: '18vh'});
+      $('#grid').animate({top: '22vh'});
+    }
+    else {
+      $('header').animate({height: '28vh'});
+      $('#grid').animate({top: '35vh'});
+    }
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
-    $('.item_visible').css('filter','contrast(20%)');
+    $('.item_visible').css('filter','contrast(50%)');
     chosen_project_subcategory = $(this).attr('class');
     //remove, then add, highlights
     $('.subsubmenu a').css('color','grey');//#EDCB64 for yellow

@@ -54,7 +54,9 @@ html {
 ::-webkit-scrollbar {
 display: none;
 }
-
+::-moz-scrollbar {
+display: none;
+}
 body {
   background-color: white;
 }
@@ -91,30 +93,45 @@ a {
 .menu {
 	position: absolute;
 	width: 100vw;
-	top: 30vh;
+	top: 18vh;
 	text-align: center;
 }
 .menu ul li {
-	padding: 4vh 0;
+	padding: 6vh 0;
 }
 .menu ul li a {
 	text-decoration: none;
 	font-weight: 700;
-	font-size: 2.5vw;
-	letter-spacing: 0.25vw;
-	transition: padding 1s;
-	color: white;
+	font-size: 6vw;
+	letter-spacing: 0.6vw;
+	transition: color 0.5s;
+	color: grey;
 }
 .menu ul li a:focus, .menu ul li a:hover {
-	padding-bottom: 1vh;
-	border-bottom: 0.5vh solid white;
+	color: white;
+}
+@media only screen and (min-aspect-ratio:16/10){
+	.menu {
+		top: 28vh;
+	}
+	.menu ul li a {
+		font-size: 2.5vw;
+		letter-spacing: 0.25vw;
+	}
 }
 .exit_icon {
 	position: absolute;
-	top: 9.5vh;
-	right: 11.2vw;
-	height: 5vh;
+	top: 3.5vh;
+	right: 15vw;
+	height: 4vh;
 	width: 3vw;
+}
+@media only screen and (min-aspect-ratio:16/10) {
+	.exit_icon {
+		top: 9.5vh;
+		right: 11.2vw;
+		height: 5vh;
+	}
 }
 .exit_icon img {
 	height: 100%;
@@ -124,20 +141,24 @@ a {
 .pagewrap {
 	position: absolute;
 	width: 90vw;
-	min-height: 200vh;
+	min-height: 150vh;
 	top: 0;
 	left: 5vw;
 	background-color: #f2f2f2;
 }
+@media only screen and (min-aspect-ratio:16/10){
+	.pagewrap {
+		min-height: 200vh
+	}
+}
 
-/*header: logo and main menu*/
+/*header basic*/
 header {
-	height: 24vh;
+	height: 15vh;
 	width: 80vw;
 	position: fixed;
 	top: 0;
 	left: 10vw;
-	padding-top: 5vh;
 	z-index: 2;
 	background-color: #f2f2f2;/*#82C3C7 turquoise*/
 }
@@ -148,21 +169,34 @@ header .logo {
 	padding: 0;
 }
 .logo img{
-	height: 10vh;
+	height: 6vh;
 	width: auto;
 	padding: 2vh 0.5vw 0;
 }
-
-/*main menu icon*/
+	/*main menu icon*/
 .menu_icon {
 	float: right;
-	padding: 2vw 1vh 0;
-	height: 6vh;
-	width: 5%;
+	padding: 3vh 4vw 0;
+	height: 5vh;
+	width: 5vw;
 }
 .menu_icon img {
 	height: 100%;
 	width: auto;
+}
+/*header big screen*/
+@media only screen and (min-aspect-ratio:16/10){
+	header {
+		height: 24vh;
+		padding-top: 5vh;
+	}
+	.logo img{
+		height: 10vh;
+	}
+	.menu_icon {
+		padding: 3vh 0 0;
+		height: 6vh;
+	}
 }
 
 /*horizontal navbar basics*/
@@ -178,11 +212,8 @@ header .logo {
 	text-decoration: none;
 	letter-spacing: 0.2vw;
 	font-size: 1.35vw;
-	padding-top: 0.5vh;
-	transition: padding 0.5s;
 	color: grey;
 }
-
 .submenu {
 	width: 100%;
 	display: inline-block;
@@ -192,11 +223,18 @@ header .logo {
 	padding: 0 3vw;
 }
 .submenu ul li a {
-	letter-spacing: 0.15vw;
-	font-size: 1.8vw;
+	letter-spacing: 0.25vw;
+	font-size: 2.5vw;
+}
+/*submenu text big screen*/
+@media only screen and (min-aspect-ratio:16/10){
+	.submenu ul li a {
+		letter-spacing: 0.2vw;
+		font-size: 1.8vw;
+	}
 }
 .subsubmenu {
-	top: 5vh;
+	top: 3vh;
 	width: 100%;
 }
 .subsubmenu .arch, .subsubmenu .design, .subsubmenu .film {
@@ -206,28 +244,62 @@ header .logo {
 	padding: 0 1vw;
 }
 .subsubmenu ul li a {
-	letter-spacing: 0.1vw;
-	font-size: 1.2vw;
+	letter-spacing: 0.2vw;
+	font-size: 1.8vw;
+}
+/*subsubmenu text big screen*/
+@media only screen and (min-aspect-ratio:16/10){
+	.subsubmenu {
+		top: 6vh;
+	}
+	.subsubmenu ul li a {
+		letter-spacing: 0.1vw;
+		font-size: 1.2vw;
+	}
 }
 
-/*project thumb grid, masonry*/
+/*masonry grid basics*/
 #grid {
 	z-index: 1;
 	position: absolute;
-	top: 30vh;
+	top: 15vh;
 	left: 5vw;
 	width: 80vw;
 	background-color: #f2f2f2;
 }
 #grid .item, .grid-sizer {
-	margin: 0;
-	width: 33.33%;
+	width: 50%;
+	height: auto !important;
+	margin-bottom: 0.75vw;
 }
 #grid .item img {
-	width: 97.5%;
-	padding: 0 1.25% 0.9vh;
-	height: auto;
+	width: 39vw;
+	padding: 0 0.5vw;
+	height: 29.25vw !important;
 }
+#grid .item .double_height {
+	height: 60vw !important;
+}
+
+/*grid big screen*/
+@media only screen and (min-aspect-ratio:16/10){
+	#grid {
+		top: 30vh;
+	}
+	#grid .item, .grid-sizer {
+		width: 33.33%;
+		margin-bottom: 0.5vw;
+	}
+	#grid .item img {
+		width: 26vw;
+		padding: 0 0.33vw;
+		height: 19.5vw !important;
+	}
+	#grid .item .double_height {
+		height: 39.6vw !important;
+	}
+}/*big screen finish*/
+
 #grid .item_hidden {
 	position: absolute;
 	width: 100%;
@@ -239,6 +311,6 @@ header .logo {
 	transition: opacity 1s;
 }
 #grid .item_visible {
-	filter: contrast(20%);
+	filter: contrast(50%);
 	transition: filter 1s;
 }
