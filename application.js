@@ -1,4 +1,5 @@
 var grid_view=true;
+var menu_view=false;
 
 $(document).ready(function() {//enabling js after page loads
 
@@ -12,9 +13,35 @@ $(document).ready(function() {//enabling js after page loads
     });
   });
 
-  //on item click; expand navigation, remove grid, load project
+  //open menu on click
   $('header').on('click', '.menu_icon', function() {
-
+    menu_view=true;
+    $('.menu_open').fadeIn(300);
+    $('.menu_icon').fadeOut(500);
+    $('.menu_container').fadeIn(1000);
+    //replace logo with white one in foreground
+    //fade in menu items
+  });
+  //exiting menu
+  //1.escape key is pressed
+  $(document).keydown(function(event) {
+    if (menu_view==true){
+      if(event.which==27){
+        menu_view=false;
+        $('.menu_container').fadeOut(300);
+        $('.menu_open').fadeOut(500);
+        $('.menu_icon').fadeIn(1000);
+      }
+    }
+  });
+  //2.exit icon is clicked
+  $('.menu_container').on('click', '.exit_icon', function() {
+    if (menu_view==true){
+      menu_view=false;
+      $('.menu_container').fadeOut(300);
+      $('.menu_open').fadeOut(500);
+      $('.menu_icon').fadeIn(1000);
+    }
   });
 
   //show tags on hover (only when in grid-view)
