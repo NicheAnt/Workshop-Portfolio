@@ -1,6 +1,13 @@
 var grid_view=true;
 var menu_view=false;
 var mobile_view=true;
+//loading sequence for home-page: after everything loads
+window.onload = function() {
+  $('#grid').fadeIn(1000);
+  //refresh layout
+  $('#grid').masonry('reloadItems');
+  $('#grid').masonry('layout');
+};
 
 $(document).ready(function() {//enabling js after page loads
 
