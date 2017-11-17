@@ -1,6 +1,7 @@
 var grid_view=true;
-var menu_view=false;
 var mobile_view=true;
+var menu_view=false;
+
 //loading sequence for home-page: after everything loads
 window.onload = function() {
   $('#grid').fadeIn(1000);
@@ -12,7 +13,7 @@ window.onload = function() {
 
 $(document).ready(function() {//enabling js after page loads
 
-  //masonry grid
+//masonry grid
   $(function(){
     $('#grid').masonry({
     // options
@@ -22,21 +23,21 @@ $(document).ready(function() {//enabling js after page loads
     });
   });
 
+  //querying for aspect ratio
   var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
   if(hhr>16) { mobile_view=false; }
-  //alert($("header").height()+', '+$(window).height()+', '+hhr);
 
+//menu
   //open menu on click
   $('header').on('click', '.menu_icon', function() {
     menu_view=true;
-    $('.menu_open').fadeIn(300);
+    $('.menu_open').fadeIn(300);//tint
     $('.menu_icon').fadeOut(500);
-    $('.menu_container').fadeIn(1000);
+    $('.menu_container').fadeIn(1000);//content
     //replace logo with white one in foreground
     //fade in menu items
   });
-  //exiting menu
-  //1.escape key is pressed
+  //exit menu; 1.escape key is pressed
   $(document).keydown(function(event) {
     if (menu_view==true){
       if(event.which==27){
@@ -57,7 +58,7 @@ $(document).ready(function() {//enabling js after page loads
     }
   });
 
-  //show tags on hover (only when in grid-view)
+//show tags on hover (only when in grid-view)
   $(".item").hover(function(){
     if(grid_view){
       $(this).find('.item_hidden').css("opacity", "1");
@@ -75,7 +76,7 @@ $(document).ready(function() {//enabling js after page loads
   var chosen_project_category = 'arch';
   var chosen_project_subcategory = 'interior';
 
-  //on item click; expand navigation, remove grid, load project
+//on item click; expand navigation, remove grid, load project
   $('#grid').on('click', '.item', function() {
     grid_view=false;
     //remove hover content immediately
@@ -100,8 +101,7 @@ $(document).ready(function() {//enabling js after page loads
     //refresh layout
     $('#grid').masonry('reloadItems');
     $('#grid').masonry('layout');
-    //show submenus
-    //$('.submenu').css('display','inline-block');
+    //show correct subsubmenu
     $('.subsubmenu .'+chosen_project_category).css('display','inline-block');
     //remove, then add, highlights
     $('.horizmenu a').css('color','grey');
@@ -109,10 +109,9 @@ $(document).ready(function() {//enabling js after page loads
     $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
 
     //load project content
-
   });
 
-  //selection in submenu
+//selection in submenu
   $('.submenu').on('click', 'a', function() {
     //pull down header
     if(mobile_view){
@@ -145,7 +144,7 @@ $(document).ready(function() {//enabling js after page loads
     $('#grid').masonry('layout');
   });
 
-  //selection in subsubmenu
+//selection in subsubmenu
   $('.subsubmenu').on('click', 'a', function() {
     //pull down header
     if(mobile_view){
