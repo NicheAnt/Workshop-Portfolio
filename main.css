@@ -72,6 +72,11 @@ a {
 	font-weight: 400;
 	text-decoration: none;
 }
+p {
+	font-family: 'Lato';
+	font-weight: 400;
+	text-decoration: none;
+}
 /*menu*/
 .menu_open { /*tint*/
 	display: none;
@@ -267,24 +272,51 @@ header .logo {/*position logo container*/
 	top: 23vh;
 	left: 5vw;
 	width: 80vw;
-	background-color: #f2f2f2;
+	min-height: 120vh;
+	background-color: white; /* light grey #f2f2f2 */
+}
+#project-page .colp1 {
+	display: inline-block;
+	width: 50%;
+	float: left;
+}
+#project-page .colp2 {
+	display: inline-block;
+	width: 50%;
+	float: left;
+	text-align: center;
 }
 #project-page figure {
-	width: 50%;
-	height: auto;
+	margin: 2vw; 
 }
 #project-page figure img {
 	width: 100%;
 	height: auto;
 }
+#project-page .colp2 p {
+	text-align: left;
+	padding: 5vh 5vw;
+	font-size: 2.5vw;
+	line-height: 3vw;
+}
+#project-page .colp2 h1 {
+	font-size: 4vw;
+}
 @media only screen and (min-aspect-ratio:16/10){
-	#project-page { /*big screen adjustments*/
-		top: 35vh;
+	/*big screen adjustments*/
+	#project-page { top: 35vh; min-height: 150vh; }
+	#project-page .colp1 { width: 33%; }
+	#project-page .colp2 { width: 67%; }
+	#project-page .colp2 p {
+		font-size: 1.2vw;
+		line-height: 2vw;
 	}
-	#project-page figure {
-		width: 33%;
+	#project-page .colp2 h1 {
+		font-size: 1.5vw;
 	}
 }
+
+
 /*masonry grid basics*/
 #grid {
 	display: none;
@@ -346,7 +378,7 @@ header .logo {/*position logo container*/
 	position: fixed;
 	left: 46.5vw;
 	top: 35vh;
-	border: 1vw solid #f3f3f3; /* Light grey */
+	border: 1vw solid #d3d3d3; /* Light grey */
 	border-top: 1vw solid black;
 	border-radius: 50%;
 	width: 5vw;
@@ -357,7 +389,7 @@ header .logo {/*position logo container*/
 	.loader {
 		top: 45vh;
 		left: 48.5vw;
-		border: 0.5vw solid #f3f3f3; /* Light grey */
+		border: 0.5vw solid #d3d3d3; /* Light grey */
 		border-top: 0.5vw solid black;
 		width: 3vw;
 		height: 3vw;

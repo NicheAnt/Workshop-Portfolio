@@ -71,6 +71,7 @@ $(document).ready(function() {//enabling js after page loads
       $(this).find('.item_visible').css('filter','contrast(50%)');
     }
   });
+
 //project page
   //initialize global variables of chosen project
   var chosen_project = 'proj1';
@@ -108,9 +109,9 @@ $(document).ready(function() {//enabling js after page loads
     $('.submenu .'+chosen_project_category).css('color','black');
     $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
     //remove grid
-    $('#grid').fadeOut(1000);
+    $('#grid').fadeOut(2000);
     //project: load external html
-    $('#project-page').fadeIn(1000);
+    $('#project-page').fadeIn(2000);
     //loading external html
     $.ajax({ url: 'projects/'+chosen_project+'.html',
             success: function(result) {
