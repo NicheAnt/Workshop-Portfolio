@@ -47,16 +47,15 @@ table {
 }
 
 /* custom css starts here... */
-html {
-	overflow-y: scroll;  /*there's always a vertical scrollbar */
-}
-/*getting rid of scrollbar in chrome*/
+
+/*getting rid of scrollbar*/
 ::-webkit-scrollbar {
 display: none;
 }
 ::-moz-scrollbar {
 display: none;
 }
+/*general: color and font*/
 body {
   background-color: white;
 }
@@ -73,7 +72,8 @@ a {
 	font-weight: 400;
 	text-decoration: none;
 }
-.menu_open {
+/*menu*/
+.menu_open { /*tint*/
 	display: none;
 	z-index: 3;
 	position: fixed;
@@ -83,21 +83,21 @@ a {
 	filter: opacity(90%);
 	background-color: black;
 }
-.menu_container {
+.menu_container {/*icon plus content*/
 	display: none;
 	position: relative;
 	width: 100%;
 	top: 0;
 	left: 0;
 }
-.menu {
+.menu {/*content*/
 	position: absolute;
 	width: 100vw;
 	top: 18vh;
 	text-align: center;
 }
-.menu ul li {
-	padding: 6vh 0;
+.menu ul li {/*each list item*/
+	padding: 7vh 0;
 }
 .menu ul li a {
 	text-decoration: none;
@@ -108,18 +108,21 @@ a {
 	color: grey;
 }
 .menu ul li a:focus, .menu ul li a:hover {
-	color: white;
+	color: white;/*turn links whte on hover*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu {
-		top: 28vh;
+		top: 30vh;/*position of links in big screens*/
+	}
+	.menu ul li {/*padding list items*/
+		padding: 5.5vh 0;
 	}
 	.menu ul li a {
 		font-size: 2.5vw;
 		letter-spacing: 0.25vw;
 	}
 }
-.exit_icon {
+.exit_icon {/*position exactly over menu icon*/
 	position: absolute;
 	top: 3.5vh;
 	right: 15vw;
@@ -127,7 +130,7 @@ a {
 	width: 3vw;
 }
 @media only screen and (min-aspect-ratio:16/10) {
-	.exit_icon {
+	.exit_icon {/*for big screens*/
 		top: 9.5vh;
 		right: 11.2vw;
 		height: 5vh;
@@ -137,43 +140,42 @@ a {
 	height: 100%;
 	width: auto;
 }
-
+/*wrapper for header and grid*/
 .pagewrap {
 	position: absolute;
 	width: 90vw;
-	min-height: 150vh;
+	min-height: 150vh;/* !adjust to no. of projects*/
 	top: 0;
 	left: 5vw;
-	background-color: #f2f2f2;
+	background-color: #f2f2f2;/*light grey*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.pagewrap {
-		min-height: 200vh
+		min-height: 200vh;/*big screen*/
 	}
 }
-
 /*header basic*/
 header {
-	height: 15vh;
+	height: 16vh;
 	width: 80vw;
 	position: fixed;
 	top: 0;
 	left: 10vw;
 	z-index: 2;
-	background-color: #f2f2f2;/*#82C3C7 turquoise*/
+	background-color: #f2f2f2;/*light grey*/
 }
-header .logo {
+header .logo {/*position logo container*/
 	display: inline-block;
 	width: 10vw;
 	float: left;
 	padding: 0;
 }
-.logo img{
+.logo img {/*size the logo*/
 	height: 6vh;
 	width: auto;
 	padding: 2vh 0.5vw 0;
 }
-	/*main menu icon*/
+/*main menu icon*/
 .menu_icon {
 	float: right;
 	padding: 3vh 4vw 0;
@@ -198,7 +200,6 @@ header .logo {
 		height: 6vh;
 	}
 }
-
 /*horizontal navbar basics*/
 .horizmenu {
 	display: inline-block;
@@ -214,6 +215,7 @@ header .logo {
 	font-size: 1.35vw;
 	color: grey;
 }
+/*submenu text*/
 .submenu {
 	width: 100%;
 	display: inline-block;
@@ -226,13 +228,13 @@ header .logo {
 	letter-spacing: 0.25vw;
 	font-size: 2.5vw;
 }
-/*submenu text big screen*/
 @media only screen and (min-aspect-ratio:16/10){
-	.submenu ul li a {
+	.submenu ul li a {/*big screen*/
 		letter-spacing: 0.2vw;
 		font-size: 1.8vw;
 	}
 }
+/*subsubmenu text*/
 .subsubmenu {
 	top: 3vh;
 	width: 100%;
@@ -244,26 +246,51 @@ header .logo {
 	padding: 0 1vw;
 }
 .subsubmenu ul li a {
-	letter-spacing: 0.2vw;
-	font-size: 1.8vw;
+	letter-spacing: 0.3vw;
+	font-size: 2.5vw;
 }
-/*subsubmenu text big screen*/
 @media only screen and (min-aspect-ratio:16/10){
-	.subsubmenu {
+	.subsubmenu {/*big screen*/
 		top: 6vh;
 	}
 	.subsubmenu ul li a {
-		letter-spacing: 0.1vw;
+		letter-spacing: 0.15vw;
 		font-size: 1.2vw;
 	}
 }
 
+/*project page*/
+#project-page {
+	display: none;
+	z-index: 0;
+	position: absolute;
+	top: 23vh;
+	left: 5vw;
+	width: 80vw;
+	background-color: #f2f2f2;
+}
+#project-page figure {
+	width: 50%;
+	height: auto;
+}
+#project-page figure img {
+	width: 100%;
+	height: auto;
+}
+@media only screen and (min-aspect-ratio:16/10){
+	#project-page { /*big screen adjustments*/
+		top: 35vh;
+	}
+	#project-page figure {
+		width: 33%;
+	}
+}
 /*masonry grid basics*/
 #grid {
 	display: none;
 	z-index: 1;
 	position: absolute;
-	top: 15vh;
+	top: 17vh;
 	left: 5vw;
 	width: 80vw;
 	background-color: #f2f2f2;
@@ -281,11 +308,10 @@ header .logo {
 #grid .item .double_height {
 	height: 60vw !important;
 }
-
 /*grid big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	#grid {
-		top: 30vh;
+		top: 31vh;
 	}
 	#grid .item, .grid-sizer {
 		width: 33.33%;
@@ -300,7 +326,6 @@ header .logo {
 		height: 39.6vw !important;
 	}
 }/*big screen finish*/
-
 #grid .item_hidden {
 	position: absolute;
 	width: 100%;
@@ -315,7 +340,7 @@ header .logo {
 	filter: contrast(50%);
 	transition: filter 1s;
 }
-
+/*loading animation*/
 .loader {
 	z-index: 5;
 	position: fixed;
