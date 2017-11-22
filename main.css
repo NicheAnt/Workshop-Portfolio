@@ -161,7 +161,7 @@ p {
 }
 /*header basic*/
 header {
-	height: 16vh;
+	height: 8vh;
 	width: 80vw;
 	position: fixed;
 	top: 0;
@@ -205,6 +205,29 @@ header .logo {/*position logo container*/
 		height: 6vh;
 	}
 }
+/*sub-header basic*/
+.sub-header {
+	height: 8vh;
+	width: 80vw;
+	position: fixed;
+	top: 8vh;
+	left: 10vw;
+	z-index: 2;
+	background-color: #f2f2f2;/*light grey*/
+}
+/*sub-header big screen*/
+@media only screen and (min-aspect-ratio:16/10){
+	.sub-header {
+		width: 68vw;
+		position: fixed;
+		top: 12vh;
+		padding-top: 5vh;
+		left: 16vw;
+		z-index: 2;
+		background-color: transparent;
+	}
+}
+
 /*horizontal navbar basics*/
 .horizmenu {
 	display: inline-block;
@@ -303,7 +326,7 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	/*big screen adjustments*/
-	#project-page { top: 35vh; min-height: 150vh; }
+	#project-page { top: 22vh; min-height: 150vh; }
 	#project-page .colp1 {
 		width: 33%;
 		padding: 5vh 3% 0 4%;
@@ -347,7 +370,7 @@ header .logo {/*position logo container*/
 /*grid big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	#grid {
-		top: 31vh;
+		top: 24vh;
 	}
 	#grid .item, .grid-sizer {
 		width: 33.33%;

@@ -1,6 +1,6 @@
+//global variables
 var grid_view=true;
-var mobile_view=true;
-var project_view=false;
+var mobile_view=false;
 var menu_view=false;
 
 //loading sequence for home-page: after everything loads
@@ -12,7 +12,12 @@ window.onload = function() {
   $('#grid').masonry('layout');
 };
 
-$(document).ready(function() {//enabling js after page loads
+//querying for aspect ratio
+var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
+if(hhr<10) { mobile_view=true; }
+
+//enabling js after page loads
+$(document).ready(function() {
 
 //masonry grid
   $(function(){
@@ -23,10 +28,6 @@ $(document).ready(function() {//enabling js after page loads
       percentPosition: true
     });
   });
-
-  //querying for aspect ratio
-  var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
-  if(hhr>16) { mobile_view=false; }
 
 //menu
   //open menu on click
@@ -77,21 +78,26 @@ $(document).ready(function() {//enabling js after page loads
   var chosen_project = 'proj1';
   var chosen_project_category = 'arch';
   var chosen_project_subcategory = 'interior';
-  //on item click; expand navigation, remove grid, load project
-  $('#grid').on('click', '.item', function() {
+//on item click; expand navigation, remove grid, load project
+  $('#grid').on('click', '.item', function(event) {
+    event.preventDefault();
+    $(window).scrollTop(0);
     grid_view=false;
     //remove hover content immediately
     $(this).find('.item_hidden').css("opacity", "0");
     $(this).find('.item_visible').css('filter','contrast(100%)');
     //pull down header
     if(mobile_view){
-      $('header').animate({height: '21vh'});
+      $('.sub-header').animate({height: '12vh'});
       $('#grid').animate({top: '25vh'});
       $('#grid').css('left','8vw');
     }
     else {
-      $('header').animate({height: '28vh'});
-      $('#grid').animate({top: '40vh'});
+      $(".sub-header").css("position","fixed");
+      $(".sub-header").animate({top: '0'});
+      $(".sub-header").css("left","16vw");
+      $('header').animate({height: '18vh'});
+      $('#grid').css('top','26vh');
       $('#grid').css('left','8vw');
     }
     //record the tags of chosen project (split index might get confused when classes are added & removed)
@@ -118,7 +124,6 @@ $(document).ready(function() {//enabling js after page loads
     $.ajax({ url: 'projects/'+chosen_project+'.html',
             success: function(result) {
               $('#project-page').html(result);
-              project_view=true;
             },
             error: function(request, errorType, errorMessage){
               alert('Error: '+errorType+', with message:'+errorMessage);
@@ -127,7 +132,9 @@ $(document).ready(function() {//enabling js after page loads
   });
 
 //shuffling with submenu
-  $('.submenu').on('click', 'a', function() {
+  $('.submenu').on('click', 'a', function(event) {
+    event.preventDefault();
+    $(window).scrollTop(0);
     //remove all items from grid
     $('.item').hide();
     $('#grid div').removeClass('item');
@@ -138,13 +145,16 @@ $(document).ready(function() {//enabling js after page loads
 
     //pull down header
     if(mobile_view){
-      $('header').animate({height: '21vh'});
+      $('.sub-header').animate({height: '12vh'});
       $('#grid').animate({top: '23vh'});
       $('#grid').css('left','5vw');
     }
     else {
+      $(".sub-header").css("position","fixed");
+      $(".sub-header").animate({top: '12vh'});
+      $(".sub-header").css("left","16vw");
       $('header').animate({height: '28vh'});
-      $('#grid').animate({top: '35vh'});
+      $('#grid').css('top','35vh');
       $('#grid').css('left','5vw');
     }
     $('.item_hidden').css("opacity", "0");
@@ -166,7 +176,9 @@ $(document).ready(function() {//enabling js after page loads
   });
 
 //shuffling with subsubmenu
-  $('.subsubmenu').on('click', 'a', function() {
+  $('.subsubmenu').on('click', 'a', function(event) {
+    event.preventDefault();
+    $(window).scrollTop(0);
     //remove all items from grid
     $('.item').hide();
     $('#grid div').removeClass('item');
@@ -177,13 +189,16 @@ $(document).ready(function() {//enabling js after page loads
 
     //pull down header
     if(mobile_view){
-      $('header').animate({height: '21vh'});
+      $('.sub-header').animate({height: '12vh'});
       $('#grid').animate({top: '23vh'});
       $('#grid').css('left','5vw');
     }
     else {
+      $(".sub-header").css("position","fixed");
+      $(".sub-header").animate({top: '12vh'});
+      $(".sub-header").css("left","16vw");
       $('header').animate({height: '28vh'});
-      $('#grid').animate({top: '35vh'});
+      $('#grid').css('top','35vh');
       $('#grid').css('left','5vw');
     }
     $('.item_hidden').css("opacity", "0");
