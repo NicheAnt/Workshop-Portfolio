@@ -273,21 +273,20 @@ header .logo {/*position logo container*/
 	left: 5vw;
 	width: 80vw;
 	min-height: 120vh;
-	background-color: white; /* light grey #f2f2f2 */
+	background-color: white;/*not lightgrey #f2f2f2*/
 }
 #project-page .colp1 {
 	display: inline-block;
-	width: 50%;
+	width: 46%;
 	float: left;
+	padding: 3vh 3% 0 4%;
 }
 #project-page .colp2 {
 	display: inline-block;
-	width: 50%;
+	width: 46%;
 	float: left;
+	padding: 3vh 0 0;
 	text-align: center;
-}
-#project-page figure {
-	margin: 2vw; 
 }
 #project-page figure img {
 	width: 100%;
@@ -295,7 +294,7 @@ header .logo {/*position logo container*/
 }
 #project-page .colp2 p {
 	text-align: left;
-	padding: 5vh 5vw;
+	padding: 0 3vw;
 	font-size: 2.5vw;
 	line-height: 3vw;
 }
@@ -305,8 +304,14 @@ header .logo {/*position logo container*/
 @media only screen and (min-aspect-ratio:16/10){
 	/*big screen adjustments*/
 	#project-page { top: 35vh; min-height: 150vh; }
-	#project-page .colp1 { width: 33%; }
-	#project-page .colp2 { width: 67%; }
+	#project-page .colp1 {
+		width: 33%;
+		padding: 5vh 3% 0 4%;
+	}
+	#project-page .colp2 {
+		width: 59%;
+		padding: 5vh 0 0;
+	}
 	#project-page .colp2 p {
 		font-size: 1.2vw;
 		line-height: 2vw;
@@ -315,7 +320,6 @@ header .logo {/*position logo container*/
 		font-size: 1.5vw;
 	}
 }
-
 
 /*masonry grid basics*/
 #grid {

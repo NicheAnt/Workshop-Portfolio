@@ -86,11 +86,13 @@ $(document).ready(function() {//enabling js after page loads
     //pull down header
     if(mobile_view){
       $('header').animate({height: '21vh'});
-      $('#grid').animate({top: '23vh'});
+      $('#grid').animate({top: '25vh'});
+      $('#grid').css('left','8vw');
     }
     else {
       $('header').animate({height: '28vh'});
-      $('#grid').animate({top: '35vh'});
+      $('#grid').animate({top: '40vh'});
+      $('#grid').css('left','8vw');
     }
     //record the tags of chosen project (split index might get confused when classes are added & removed)
     chosen_project = $(this).attr('class').split(" ")[0];
@@ -130,18 +132,20 @@ $(document).ready(function() {//enabling js after page loads
     $('.item').hide();
     $('#grid div').removeClass('item');
     //show grid, remove project
-    $('#project-page').fadeOut(1000);
-    $('#grid').fadeIn(1000);
+    $('#project-page').fadeOut(500);
+    $('#grid').fadeIn(500);
     grid_view=true;
 
     //pull down header
     if(mobile_view){
       $('header').animate({height: '21vh'});
       $('#grid').animate({top: '23vh'});
+      $('#grid').css('left','5vw');
     }
     else {
       $('header').animate({height: '28vh'});
       $('#grid').animate({top: '35vh'});
+      $('#grid').css('left','5vw');
     }
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
@@ -167,18 +171,20 @@ $(document).ready(function() {//enabling js after page loads
     $('.item').hide();
     $('#grid div').removeClass('item');
     //show grid, remove project
-    $('#project-page').fadeOut(1000);
-    $('#grid').fadeIn(1000);
+    $('#project-page').fadeOut(500);
+    $('#grid').fadeIn(500);
     grid_view=true;
 
     //pull down header
     if(mobile_view){
       $('header').animate({height: '21vh'});
       $('#grid').animate({top: '23vh'});
+      $('#grid').css('left','5vw');
     }
     else {
       $('header').animate({height: '28vh'});
       $('#grid').animate({top: '35vh'});
+      $('#grid').css('left','5vw');
     }
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
