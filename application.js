@@ -12,12 +12,13 @@ window.onload = function() {
   $('#grid').masonry('layout');
 };
 
-//querying for aspect ratio based on css sizing of header
-var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
-if(hhr<25) { mobile_view=true; }
-
 //enabling js after page loads
 $(document).ready(function() {
+
+//querying for aspect ratio based on css sizing of header
+  var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
+  if(hhr<26) { mobile_view=true;
+  alert('mobile screen');}  
 
 //masonry grid
   $(function(){

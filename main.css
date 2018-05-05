@@ -431,6 +431,7 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.loading {
+		top: 47%;
 	  left: 49%;
 	}
 	.loading-bar {
