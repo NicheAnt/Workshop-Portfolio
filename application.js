@@ -85,9 +85,9 @@ $(document).ready(function() {
     grid_view=false;
     //adjust positions for mobile_view
     if(mobile_view){
-      $("header").animate({height: "22vh"});
-      $("#grid").animate({top: "22vh"});
-      $("#project-page").animate({top: "22vh"});
+      $("header").animate({height: "28vh"});
+      $("#grid").animate({top: "28vh"});
+      $("#project-page").animate({top: "28vh"});
     }
     //remove hover content immediately
     $(this).find('.item_hidden').css("opacity", "0");
@@ -132,9 +132,9 @@ $(document).ready(function() {
     $('#grid div').removeClass('item');
     //adjust positions for mobile_view
     if(mobile_view){
-      $("header").animate({height: "22vh"});
-      $("#grid").animate({top: "22vh"});
-      $("#project-page").animate({top: "22vh"});
+      $("header").animate({height: "28vh"});
+      $("#grid").animate({top: "28vh"});
+      $("#project-page").animate({top: "28vh"});
     }
     //show grid, remove project
     $('#project-page').fadeOut(500);
@@ -168,9 +168,9 @@ $(document).ready(function() {
     $('#grid div').removeClass('item');
     //adjust positions for mobile_view
     if(mobile_view){
-      $("header").animate({height: "22vh"});
-      $("#grid").animate({top: "22vh"});
-      $("#project-page").animate({top: "22vh"});
+      $("header").animate({height: "28vh"});
+      $("#grid").animate({top: "28vh"});
+      $("#project-page").animate({top: "28vh"});
     }
     //show grid, remove project
     $('#project-page').fadeOut(500);

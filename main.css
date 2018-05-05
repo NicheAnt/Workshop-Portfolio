@@ -147,14 +147,14 @@ p {
 	float: right;
 	width: auto;
 	height: auto;
-	padding-top: 5.75vh;
+	padding-top: 8.5vh;
 }
 .exit_icon img {
-	width: 3.5vw;
+	width: 5vw;
 }
 @media only screen and (min-aspect-ratio:3/4){
 	.exit_icon {/*tablet screen*/
-		padding-top: 7vh;
+		padding-top: 9.5vh;
 	}
 }
 @media only screen and (min-aspect-ratio:16/10) {
@@ -167,7 +167,7 @@ p {
 }
 /*header basic*/
 header {
-	height: 18vh;
+	height: 24vh;
 	width: 90vw;
 	position: fixed;
 	top: 0;
@@ -183,7 +183,7 @@ header .logo {/*position logo container*/
 	padding-top: 3vh;
 }
 .logo img {/*size the logo*/
-	width: 12vw;
+	width: 18vw;
 }
 /*main menu icon*/
 .menu_icon {
@@ -193,7 +193,7 @@ header .logo {/*position logo container*/
 	padding-top: 3vh;
 }
 .menu_icon img {
-	width: 3.8vw;
+	width: 6vw;
 }
 /*header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
@@ -216,7 +216,7 @@ header .logo {/*position logo container*/
 	width: 90vw;
 	position: fixed;
 	left: 5vw;
-	top: 13vh;
+	top: 18vh;
 	z-index: 2;
 	/*border: 1vh solid black;*/
 }
@@ -243,28 +243,36 @@ header .logo {/*position logo container*/
 	text-decoration: none;
 	letter-spacing: 0.1vw;
 	font-size: 1.35vw;
+	padding: 0 0.5vw 1vh 0.5vw;
+	/*border: 0.1vh solid black;*/
 }
 /*submenu text*/
 .submenu {
 	width: 100%;
 	display: inline-block;
-	padding-bottom: 1vh;
-}
-@media only screen and (min-aspect-ratio:3/4){
-	.submenu {/*tablet screen*/
-		padding: 1vh 0 2vh 0;
-	}
+	padding: 0 0 1vh 2vw;
 }
 .submenu ul li {
-	padding: 0 5vw;
+	padding: 0 1.5vw;
 }
 .submenu ul li a {
 	letter-spacing: 0.2vw;
 	font-size: 3vw;
 }
+@media only screen and (min-aspect-ratio:3/4){
+	.submenu ul li {
+		padding: 0 2.5vw;
+	}
+	.submenu {/*tablet screen*/
+		padding: 2vh 0 2vh 4vw;
+	}
+}
 @media only screen and (min-aspect-ratio:16/10){
 	.submenu {
 		padding: 0;
+	}
+	.submenu ul li {
+		padding: 0 5vw;
 	}
 	.submenu ul li a {/*wide screens*/
 		letter-spacing: 0.05vw;
@@ -356,7 +364,7 @@ header .logo {/*position logo container*/
 	display: none;
 	z-index: 1;
 	position: absolute;
-	top: 18vh;
+	top: 24vh;
 	left: 4vw;
 	width: 92vw;
 	/*border: 0.1vh solid black;*/
