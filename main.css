@@ -251,7 +251,7 @@ header .logo {/*position logo container*/
 	padding-bottom: 1vh;
 }
 @media only screen and (min-aspect-ratio:3/4){
-	.submenu {/*tablet screen & bigger*/
+	.submenu {/*tablet screen*/
 		padding: 1vh 0 2vh 0;
 	}
 }
@@ -263,6 +263,9 @@ header .logo {/*position logo container*/
 	font-size: 3vw;
 }
 @media only screen and (min-aspect-ratio:16/10){
+	.submenu {
+		padding: 0;
+	}
 	.submenu ul li a {/*wide screens*/
 		letter-spacing: 0.05vw;
 		font-size: 1.5vw;
