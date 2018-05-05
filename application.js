@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 //querying for aspect ratio based on css sizing of header
   var hw = 100*parseInt($("header").width())/parseInt($(window).width());
-  alert('header width is: '+hw+'%');
+  //alert('header width is: '+hw+'%');
   if(hw>81) { mobile_view=true;}
 
 //masonry grid
