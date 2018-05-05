@@ -407,29 +407,44 @@ header .logo {/*position logo container*/
 	transition: filter 1s;
 }
 /*loading animation*/
-.loader {
+.loading {
 	z-index: 5;
 	position: fixed;
-	left: 46.5vw;
-	top: 50vh;
-	border: 1vw solid #d3d3d3; /* Light grey */
-	border-top: 1vw solid black;
-	border-radius: 50%;
-	width: 5vw;
-	height: 5vw;
-	animation: spin 2s linear infinite;
+	top: 50%;
+  left: 50%;
 }
-@media only screen and (min-aspect-ratio:16/10){
-	.loader {
-		top: 55vh;
-		left: 48.5vw;
-		border: 0.5vw solid #d3d3d3; /* Light grey */
-		border-top: 0.5vw solid black;
-		width: 3vw;
-		height: 3vw;
-	}
+.loading-bar {
+  display: inline-block;
+  width: 0.3vw;
+	margin: 0 0.05vw;
+  height: 2.5vw;
+  border-radius: 0.3vw;
+  animation: loading 1s ease-in-out infinite;
 }
-@keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
+.loading-bar:nth-child(1) {
+  background-color: #d3d3d3;
+  animation-delay: 0;
+}
+.loading-bar:nth-child(2) {
+  background-color: black;
+  animation-delay: 0.09s;
+}
+.loading-bar:nth-child(3) {
+  background-color: #d3d3d3;
+  animation-delay: .18s;
+}
+.loading-bar:nth-child(4) {
+  background-color: black;
+  animation-delay: .27s;
+}
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1, 2.2);
+  }
+  40% {
+    transform: scale(1);
+  }
 }
