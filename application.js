@@ -6,15 +6,15 @@ var menu_view=false;
 //loading sequence for home-page: after everything loads
 window.onload = function() {
   $('#grid').fadeIn(1000);
-  $('.loader').fadeOut(1000);
+  $('.loader').fadeOut(500);
   //refresh layout
   $('#grid').masonry('reloadItems');
   $('#grid').masonry('layout');
 };
 
-//querying for aspect ratio
+//querying for aspect ratio based on css sizing of header
 var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
-if(hhr<10) { mobile_view=true; }
+if(hhr<25) { mobile_view=true; }
 
 //enabling js after page loads
 $(document).ready(function() {
@@ -83,23 +83,15 @@ $(document).ready(function() {
     event.preventDefault();
     $(window).scrollTop(0);
     grid_view=false;
+    //adjust positions for mobile_view
+    if(mobile_view){
+      $("header").animate({height: "22vh"});
+      $("#grid").animate({top: "22vh"});
+      $("#project-page").animate({top: "22vh"});
+    }
     //remove hover content immediately
     $(this).find('.item_hidden').css("opacity", "0");
     $(this).find('.item_visible').css('filter','contrast(100%)');
-    //pull down header
-    if(mobile_view){
-      $('.sub-header').animate({height: '12vh'});
-      $('#grid').animate({top: '25vh'});
-      $('#grid').css('left','8vw');
-    }
-    else {
-      $(".sub-header").css("position","fixed");
-      $(".sub-header").animate({top: '0'});
-      $(".sub-header").css("left","16vw");
-      $('header').animate({height: '18vh'});
-      $('#grid').css('top','26vh');
-      $('#grid').css('left','8vw');
-    }
     //record the tags of chosen project (split index might get confused when classes are added & removed)
     chosen_project = $(this).attr('class').split(" ")[0];
     chosen_project_category = $(this).attr('class').split(" ")[1];
@@ -116,10 +108,10 @@ $(document).ready(function() {
     $('.horizmenu a').css('color','grey');
     $('.submenu .'+chosen_project_category).css('color','black');
     $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
-    //remove grid
-    $('#grid').fadeOut(2000);
-    //project: load external html
-    $('#project-page').fadeIn(2000);
+  //remove grid
+    setTimeout(function(){ $('#grid').css('display','none'); }, 2000);
+  //project: load external html
+    setTimeout(function(){ $('#project-page').fadeIn(500); }, 1000);
     //loading external html
     $.ajax({ url: 'projects/'+chosen_project+'.html',
             success: function(result) {
@@ -138,25 +130,16 @@ $(document).ready(function() {
     //remove all items from grid
     $('.item').hide();
     $('#grid div').removeClass('item');
+    //adjust positions for mobile_view
+    if(mobile_view){
+      $("header").animate({height: "22vh"});
+      $("#grid").animate({top: "22vh"});
+      $("#project-page").animate({top: "22vh"});
+    }
     //show grid, remove project
     $('#project-page').fadeOut(500);
-    $('#grid').fadeIn(500);
+    $('#grid').fadeIn(1000);
     grid_view=true;
-
-    //pull down header
-    if(mobile_view){
-      $('.sub-header').animate({height: '12vh'});
-      $('#grid').animate({top: '23vh'});
-      $('#grid').css('left','5vw');
-    }
-    else {
-      $(".sub-header").css("position","fixed");
-      $(".sub-header").animate({top: '12vh'});
-      $(".sub-header").css("left","16vw");
-      $('header').animate({height: '28vh'});
-      $('#grid').css('top','35vh');
-      $('#grid').css('left','5vw');
-    }
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
     chosen_project_category = $(this).attr('class');
@@ -172,6 +155,7 @@ $(document).ready(function() {
     $('#grid .'+chosen_project_category).show();
     //refresh layout
     $('#grid').masonry('reloadItems');
+    //$('#grid').masonry( 'layoutItems', '.items', isStill )
     $('#grid').masonry('layout');
   });
 
@@ -182,25 +166,16 @@ $(document).ready(function() {
     //remove all items from grid
     $('.item').hide();
     $('#grid div').removeClass('item');
+    //adjust positions for mobile_view
+    if(mobile_view){
+      $("header").animate({height: "22vh"});
+      $("#grid").animate({top: "22vh"});
+      $("#project-page").animate({top: "22vh"});
+    }
     //show grid, remove project
     $('#project-page').fadeOut(500);
     $('#grid').fadeIn(500);
     grid_view=true;
-
-    //pull down header
-    if(mobile_view){
-      $('.sub-header').animate({height: '12vh'});
-      $('#grid').animate({top: '23vh'});
-      $('#grid').css('left','5vw');
-    }
-    else {
-      $(".sub-header").css("position","fixed");
-      $(".sub-header").animate({top: '12vh'});
-      $(".sub-header").css("left","16vw");
-      $('header').animate({height: '28vh'});
-      $('#grid').css('top','35vh');
-      $('#grid').css('left','5vw');
-    }
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
     chosen_project_subcategory = $(this).attr('class');

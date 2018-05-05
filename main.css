@@ -47,7 +47,10 @@ table {
 }
 
 /* custom css starts here... */
-
+@font-face {
+	font-family: gill_sans;
+	src: url(font/GillSans-Light.ttf);
+}
 /*getting rid of scrollbar*/
 ::-webkit-scrollbar {
 display: none;
@@ -58,26 +61,24 @@ display: none;
 /*general: color and font*/
 body {
   background-color: white;
+	font-family: "gill_sans";
+	color: black;
 }
 h1 {
-	font-family: 'Lato';
-	font-weight: 700;
 	color: black;
 	letter-spacing: 0.15vw;
 	font-size: 1.5vw;
 	line-height: normal;
 }
 a {
-	font-family: 'Lato';
-	font-weight: 400;
 	text-decoration: none;
+	color: black;
+	outline: 0;
 }
 p {
-	font-family: 'Lato';
-	font-weight: 400;
 	text-decoration: none;
 }
-/*menu*/
+/*dropdown menu*/
 .menu_open { /*tint*/
 	display: none;
 	z-index: 3;
@@ -85,19 +86,34 @@ p {
 	top: 0;
 	width: 100%;
 	min-height: 100vh;
-	filter: opacity(90%);
-	background-color: black;
+	filter: opacity(95%);
+	background-color: #1D1D1B;
 }
 .menu_container {/*icon plus content*/
 	display: none;
 	position: relative;
-	width: 100%;
+	width: 90vw;
 	top: 0;
-	left: 0;
+	left: 5vw;
+}
+.menu_container .logo {/*position logo container, logo size dont together with main*/
+	float: left;
+	width: auto;
+	height: auto;
+	padding-top: 3vh;
+}
+@media only screen and (min-aspect-ratio:16/10){
+	.menu_container {/*icon plus content*/
+		width: 80vw;
+		left: 10vw;
+	}
+	.menu_container .logo {/*position logo container*/
+		padding-top: 5vh;
+	}
 }
 .menu {/*content*/
 	position: absolute;
-	width: 100vw;
+	width: 100%;
 	top: 18vh;
 	text-align: center;
 }
@@ -106,7 +122,7 @@ p {
 }
 .menu ul li a {
 	text-decoration: none;
-	font-weight: 700;
+	font-weight: 400;
 	font-size: 6vw;
 	letter-spacing: 0.6vw;
 	transition: color 0.5s;
@@ -117,117 +133,103 @@ p {
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu {
-		top: 30vh;/*position of links in big screens*/
+		top: 35vh;/*position of links in big screens*/
 	}
 	.menu ul li {/*padding list items*/
-		padding: 5.5vh 0;
+		padding: 5vh 0;
 	}
 	.menu ul li a {
-		font-size: 2.5vw;
-		letter-spacing: 0.25vw;
+		font-size: 1.8vw;
+		letter-spacing: 0.1vw;
 	}
 }
-.exit_icon {/*position exactly over menu icon*/
-	position: absolute;
-	top: 3.5vh;
-	right: 15vw;
-	height: 4vh;
-	width: 3vw;
-}
-@media only screen and (min-aspect-ratio:16/10) {
-	.exit_icon {/*for big screens*/
-		top: 9.5vh;
-		right: 11.2vw;
-		height: 5vh;
-	}
+.exit_icon {
+	float: right;
+	width: auto;
+	height: auto;
+	padding-top: 5.75vh;
 }
 .exit_icon img {
-	height: 100%;
-	width: auto;
+	width: 3.5vw;
 }
-/*wrapper for header and grid*/
-.pagewrap {
-	position: absolute;
-	width: 90vw;
-	min-height: 150vh;/* !adjust to no. of projects*/
-	top: 0;
-	left: 5vw;
-	background-color: #f2f2f2;/*light grey*/
+@media only screen and (min-aspect-ratio:3/4){
+	.exit_icon {/*tablet screen*/
+		padding-top: 7vh;
+	}
 }
-@media only screen and (min-aspect-ratio:16/10){
-	.pagewrap {
-		min-height: 200vh;/*big screen*/
+@media only screen and (min-aspect-ratio:16/10) {
+	.exit_icon {/*wider screens*/
+		padding-top: 13vh;
+	}
+	.exit_icon img {
+		width: 2.5vw;
 	}
 }
 /*header basic*/
 header {
-	height: 8vh;
-	width: 80vw;
+	height: 18vh;
+	width: 90vw;
 	position: fixed;
 	top: 0;
-	left: 10vw;
+	left: 5vw;
 	z-index: 2;
-	background-color: #f2f2f2;/*light grey*/
+	background-color: white;
+	/*border: 0.1vh solid black;*/
 }
 header .logo {/*position logo container*/
-	display: inline-block;
-	width: 10vw;
 	float: left;
-	padding: 0;
+	width: auto;
+	height: auto;
+	padding-top: 3vh;
 }
 .logo img {/*size the logo*/
-	height: 6vh;
-	width: auto;
-	padding: 2vh 0.5vw 0;
+	width: 12vw;
 }
 /*main menu icon*/
 .menu_icon {
 	float: right;
-	padding: 3vh 4vw 0;
-	height: 5vh;
-	width: 5vw;
+	width: auto;
+	height: auto;
+	padding-top: 3vh;
 }
 .menu_icon img {
-	height: 100%;
-	width: auto;
+	width: 3.8vw;
 }
 /*header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	header {
-		height: 24vh;
-		padding-top: 5vh;
+		width: 80vw;
+		height: 28vh;
+		left: 10vw;
+		padding-top: 2vh;
 	}
 	.logo img{
-		height: 10vh;
+		width: 9vw;
 	}
-	.menu_icon {
-		padding: 3vh 0 0;
-		height: 6vh;
+	.menu_icon img {
+		width: 2.8vw;
 	}
 }
 /*sub-header basic*/
 .sub-header {
-	height: 8vh;
-	width: 80vw;
+	height: 3vh;
+	width: 90vw;
 	position: fixed;
-	top: 8vh;
-	left: 10vw;
+	left: 5vw;
+	top: 13vh;
 	z-index: 2;
-	background-color: #f2f2f2;/*light grey*/
+	/*border: 1vh solid black;*/
 }
 /*sub-header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	.sub-header {
-		width: 68vw;
-		position: fixed;
-		top: 12vh;
-		padding-top: 5vh;
-		left: 16vw;
+		height: 8vh;
+		width: 58vw;
+		left: 22vw;
+		top: 13vh;
 		z-index: 2;
-		background-color: transparent;
 	}
 }
-
 /*horizontal navbar basics*/
 .horizmenu {
 	display: inline-block;
@@ -239,39 +241,42 @@ header .logo {/*position logo container*/
 }
 .horizmenu ul li a {
 	text-decoration: none;
-	letter-spacing: 0.2vw;
+	letter-spacing: 0.1vw;
 	font-size: 1.35vw;
-	color: grey;
 }
 /*submenu text*/
 .submenu {
 	width: 100%;
 	display: inline-block;
-	top: 2vh;
+	padding-bottom: 1vh;
+}
+@media only screen and (min-aspect-ratio:3/4){
+	.submenu {/*tablet screen & bigger*/
+		padding: 1vh 0 2vh 0;
+	}
 }
 .submenu ul li {
-	padding: 0 3vw;
+	padding: 0 5vw;
 }
 .submenu ul li a {
-	letter-spacing: 0.25vw;
-	font-size: 2.5vw;
+	letter-spacing: 0.2vw;
+	font-size: 3vw;
 }
 @media only screen and (min-aspect-ratio:16/10){
-	.submenu ul li a {/*big screen*/
-		letter-spacing: 0.2vw;
-		font-size: 1.8vw;
+	.submenu ul li a {/*wide screens*/
+		letter-spacing: 0.05vw;
+		font-size: 1.5vw;
 	}
 }
 /*subsubmenu text*/
 .subsubmenu {
-	top: 3vh;
 	width: 100%;
 }
 .subsubmenu .arch, .subsubmenu .design, .subsubmenu .film {
 	display: none;
 }
 .subsubmenu ul li {
-	padding: 0 1vw;
+	padding: 0 2vw;
 }
 .subsubmenu ul li a {
 	letter-spacing: 0.3vw;
@@ -279,45 +284,41 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.subsubmenu {/*big screen*/
-		top: 6vh;
+		top: 5vh;
 	}
 	.subsubmenu ul li a {
 		letter-spacing: 0.15vw;
 		font-size: 1.2vw;
 	}
 }
-
 /*project page*/
 #project-page {
 	display: none;
 	z-index: 0;
 	position: absolute;
-	top: 23vh;
+	top: 18vh;
 	left: 5vw;
-	width: 80vw;
+	width: 90vw;
 	min-height: 120vh;
-	background-color: white;/*not lightgrey #f2f2f2*/
+	/*border: 0.1vh solid black;*/
 }
 #project-page .colp1 {
 	display: inline-block;
-	width: 46%;
+	width: 44vw !important;
 	float: left;
-	padding: 3vh 3% 0 4%;
+	padding-right: 3%;
 }
 #project-page .colp2 {
 	display: inline-block;
 	width: 46%;
 	float: left;
-	padding: 3vh 0 0;
-	text-align: center;
+	text-align: justify;
 }
 #project-page figure img {
 	width: 100%;
 	height: auto;
 }
 #project-page .colp2 p {
-	text-align: left;
-	padding: 0 3vw;
 	font-size: 2.5vw;
 	line-height: 3vw;
 }
@@ -326,14 +327,18 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	/*big screen adjustments*/
-	#project-page { top: 22vh; min-height: 150vh; }
+	#project-page {
+		left: 10vw;
+		width: 80vw;
+		top: 30vh;
+		min-height: 150vh;
+	}
 	#project-page .colp1 {
-		width: 33%;
-		padding: 5vh 3% 0 4%;
+		width: 26vw !important;
+		padding-right: 3%;
 	}
 	#project-page .colp2 {
-		width: 59%;
-		padding: 5vh 0 0;
+		width: 64%;
 	}
 	#project-page .colp2 p {
 		font-size: 1.2vw;
@@ -343,48 +348,47 @@ header .logo {/*position logo container*/
 		font-size: 1.5vw;
 	}
 }
-
 /*masonry grid basics*/
 #grid {
 	display: none;
 	z-index: 1;
 	position: absolute;
-	top: 17vh;
-	left: 5vw;
-	width: 80vw;
-	background-color: #f2f2f2;
+	top: 18vh;
+	left: 4vw;
+	width: 92vw;
+	/*border: 0.1vh solid black;*/
 }
-#grid .item, .grid-sizer {
-	width: 50%;
-	height: auto !important;
-	margin-bottom: 0.75vw;
+#grid .item a {
+	outline: 0;
+}
+#grid .item, #grid .grid-sizer {
+	width: 44vw !important;
+	margin: 0 1vw 1.5vw 1vw;
 }
 #grid .item img {
-	width: 39vw;
-	padding: 0 0.5vw;
-	height: 29.25vw !important;
-}
-#grid .item .double_height {
-	height: 60vw !important;
+	width: 100% !important;
+	height: auto !important;
 }
 /*grid big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	#grid {
-		top: 24vh;
+		top: 30vh;
+		left: 9.5vw;
+		width: 81vw;
 	}
-	#grid .item, .grid-sizer {
-		width: 33.33%;
-		margin-bottom: 0.5vw;
+	#grid .gutter-sizer {
+		width: 1vw;
+	}
+	#grid .item, #grid .grid-sizer  {
+		width: 26vw !important;
+		margin: 0 0.5vw 1vw 0.5vw;
 	}
 	#grid .item img {
-		width: 26vw;
-		padding: 0 0.33vw;
-		height: 19.5vw !important;
-	}
-	#grid .item .double_height {
-		height: 39.6vw !important;
+		width: 100% !important;
+		height: auto !important;
 	}
 }/*big screen finish*/
+
 #grid .item_hidden {
 	position: absolute;
 	width: 100%;
@@ -404,7 +408,7 @@ header .logo {/*position logo container*/
 	z-index: 5;
 	position: fixed;
 	left: 46.5vw;
-	top: 35vh;
+	top: 50vh;
 	border: 1vw solid #d3d3d3; /* Light grey */
 	border-top: 1vw solid black;
 	border-radius: 50%;
@@ -414,7 +418,7 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.loader {
-		top: 45vh;
+		top: 55vh;
 		left: 48.5vw;
 		border: 0.5vw solid #d3d3d3; /* Light grey */
 		border-top: 0.5vw solid black;
