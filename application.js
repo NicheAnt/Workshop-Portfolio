@@ -16,9 +16,9 @@ window.onload = function() {
 $(document).ready(function() {
 
 //querying for aspect ratio based on css sizing of header
-  var hhr = 100*parseInt($("header").height())/parseInt($(window).height());
-  if(hhr<26) { mobile_view=true;
-  alert('mobile screen');}  
+  var hw = 100*parseInt($("header").width())/parseInt($(window).width());
+  alert('header width is: '+hw+'%');
+  if(hw>81) { mobile_view=true;}
 
 //masonry grid
   $(function(){
