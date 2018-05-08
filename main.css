@@ -78,14 +78,14 @@ a {
 p {
 	text-decoration: none;
 }
-/*dropdown menu*/
-.menu_open { /*tint*/
+/*dropdown menu and also lightbox*/
+.menu_open, .lightbox { /*tint*/
 	display: none;
 	z-index: 3;
 	position: fixed;
 	top: 0;
-	width: 100%;
-	min-height: 100vh;
+	width: 100vw;
+	height: 100vh;
 	filter: opacity(95%);
 	background-color: #1D1D1B;
 }
@@ -101,6 +101,22 @@ p {
 	width: auto;
 	height: auto;
 	padding-top: 3vh;
+}
+.lightbox {
+	filter: opacity(95%);
+	background-color: black;
+}
+.lightbox-target {
+	position: fixed;
+	top: 12vh;
+	left: 10vw;
+	height: 80%;
+	width: 80%;
+	text-align: center;
+}
+.lightbox-target img {
+	height: 100%;
+	width: auto;
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu_container {/*icon plus content*/
@@ -146,11 +162,19 @@ p {
 .exit_icon {
 	float: right;
 	width: auto;
-	height: auto;
 	padding-top: 8.5vh;
 }
 .exit_icon img {
 	width: 5vw;
+}
+.lightbox .exit {
+	position: fixed;
+	top: 5vh;
+	right: 3.5vw;
+}
+.lightbox .exit img {
+	width: 2vw;
+	padding: 0;
 }
 @media only screen and (min-aspect-ratio:3/4){
 	.exit_icon {/*tablet screen*/
@@ -165,6 +189,7 @@ p {
 		width: 2.5vw;
 	}
 }
+
 /*header basic*/
 header {
 	height: 24vh;
@@ -213,12 +238,12 @@ header .logo {/*position logo container*/
 /*sub-header basic*/
 .sub-header {
 	height: 3vh;
-	width: 90vw;
+	width: 100vw;
 	position: fixed;
-	left: 5vw;
+	left: 0vw;
 	top: 18vh;
 	z-index: 2;
-	/*border: 1vh solid black;*/
+	/*border: .1vh solid black;*/
 }
 /*sub-header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
@@ -245,6 +270,9 @@ header .logo {/*position logo container*/
 	font-size: 1.35vw;
 	padding: 0 0.5vw 1vh 0.5vw;
 	/*border: 0.1vh solid black;*/
+}
+.horizmenu ul li a:hover {
+	font-style: italic;
 }
 /*submenu text*/
 .submenu {
@@ -310,31 +338,48 @@ header .logo {/*position logo container*/
 	top: 18vh;
 	left: 5vw;
 	width: 90vw;
-	min-height: 120vh;
+	z-index: 1;
 	/*border: 0.1vh solid black;*/
-}
-#project-page .colp1 {
-	display: inline-block;
-	width: 44vw !important;
-	float: left;
-	padding-right: 3%;
-}
-#project-page .colp2 {
-	display: inline-block;
-	width: 46%;
-	float: left;
-	text-align: justify;
 }
 #project-page figure img {
 	width: 100%;
 	height: auto;
 }
-#project-page .colp2 p {
-	font-size: 2.5vw;
-	line-height: 3vw;
+#project-page .colp1 {
+	display: inline-block;
+	width: 44vw !important;
+	position: -webkit-sticky;
+	position: sticky;
+	bottom: 40vw; /*sticky threshold for phones*/
+	height: 120vw;
+	padding-right: 3%;
 }
-#project-page .colp2 h1 {
-	font-size: 4vw;
+#project-page .colp1 a:hover {
+	font-style: italic;
+}
+#project-page .colp2 {
+	display: inline-block;
+	width: 46%;
+	text-align: justify;
+}
+#project-page .colp2 figure img {
+	margin: 3vh 0;
+}
+#project-page .colp1 p {
+	margin-top: 1vh;
+	font-size: 3vw;
+	line-height: 5vw;
+	color: black;
+}
+#project-page .colp2 p {
+	font-size: 3vw;
+	line-height: 4.5vw;
+	color: black;
+}
+@media only screen and (min-aspect-ratio:7/10){
+	#project-page .colp1 {
+		bottom: 10vw; /*sticky threshold for tablets*/
+	}
 }
 @media only screen and (min-aspect-ratio:16/10){
 	/*big screen adjustments*/
@@ -342,11 +387,18 @@ header .logo {/*position logo container*/
 		left: 10vw;
 		width: 80vw;
 		top: 30vh;
-		min-height: 150vh;
 	}
 	#project-page .colp1 {
 		width: 26vw !important;
 		padding-right: 3%;
+		height: 50vw;
+		bottom: 4vw; /*sticky threshold for laptops & above*/
+		/*border-bottom: 0.01vh solid black;*/
+	}
+	#project-page .colp1 p {
+		margin: 3vh 0 5vh 0;
+		font-size: 1.2vw;
+		line-height: 2.5vw;
 	}
 	#project-page .colp2 {
 		width: 64%;
@@ -355,8 +407,15 @@ header .logo {/*position logo container*/
 		font-size: 1.2vw;
 		line-height: 2vw;
 	}
-	#project-page .colp2 h1 {
-		font-size: 1.5vw;
+	#project-page .colp2 .fit-height img {
+		width: auto;
+		height: 70vh;
+	}
+	.fit-height:nth-of-type(odd) {
+		float: left;
+	}
+	.fit-height:nth-of-type(even) {
+		float: right;
 	}
 }
 /*masonry grid basics*/
@@ -431,7 +490,7 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.loading {
-		top: 47%;
+
 	  left: 49%;
 	}
 	.loading-bar {
@@ -467,3 +526,4 @@ header .logo {/*position logo container*/
     transform: scale(1);
   }
 }
+/*loading animation over!*/

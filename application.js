@@ -37,7 +37,6 @@ $(document).ready(function() {
     $('.menu_open').fadeIn(300);//tint
     $('.menu_icon').fadeOut(500);
     $('.menu_container').fadeIn(1000);//content
-    //replace logo with white one in foreground
     //fade in menu items
   });
   //exit menu; 1.escape key is pressed
@@ -48,6 +47,7 @@ $(document).ready(function() {
         $('.menu_container').fadeOut(300);
         $('.menu_open').fadeOut(500);
         $('.menu_icon').fadeIn(1000);
+        $('.lightbox').fadeOut(500);
       }
     }
   });
@@ -80,23 +80,24 @@ $(document).ready(function() {
   var chosen_project_category = 'arch';
   var chosen_project_subcategory = 'interior';
 //on item click; expand navigation, remove grid, load project
-  $('#grid').on('click', '.item', function(event) {
+  $('#grid').on('mousedown', '.item', function(event) {
+    //remove hover content immediately
+    grid_view=false;
+    $(this).find('.item_hidden').css("opacity", "0");
+    $(this).find('.item_visible').css('filter','contrast(50%)');
     event.preventDefault();
     $(window).scrollTop(0);
-    grid_view=false;
     //adjust positions for mobile_view
     if(mobile_view){
-      $("header").animate({height: "28vh"});
-      $("#grid").animate({top: "28vh"});
-      $("#project-page").animate({top: "28vh"});
+      $("header").animate({height: "29vh"});
+      $("#grid").animate({top: "29vh"});
+      $("#project-page").animate({top: "29vh"});
     }
-    //remove hover content immediately
-    $(this).find('.item_hidden').css("opacity", "0");
-    $(this).find('.item_visible').css('filter','contrast(100%)');
     //record the tags of chosen project (split index might get confused when classes are added & removed)
-    chosen_project = $(this).attr('class').split(" ")[0];
-    chosen_project_category = $(this).attr('class').split(" ")[1];
-    chosen_project_subcategory = $(this).attr('class').split(" ")[2];
+    var cat = $(this).attr('class');
+    chosen_project = cat.split(" ")[0];
+    chosen_project_category = cat.split(" ")[1];
+    chosen_project_subcategory = cat.split(" ")[2];
     //remove grid elements except chosen one
     $(this).siblings().hide();
     $(this).siblings().removeClass('item');
@@ -105,18 +106,42 @@ $(document).ready(function() {
     $('#grid').masonry('layout');
     //show correct subsubmenu
     $('.subsubmenu .'+chosen_project_category).css('display','inline-block');
-    //remove, then add, highlights
+    //remove, then add, highlights (including additional categories)
     $('.horizmenu a').css('color','grey');
-    $('.submenu .'+chosen_project_category).css('color','black');
-    $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
+    for (i=1; cat.split(" ")[i] != 'item'; i++) {
+      $('.horizmenu .'+cat.split(" ")[i]).css('color','black');
+    }
   //remove grid
-    setTimeout(function(){ $('#grid').css('display','none'); }, 2000);
+    setTimeout(function(){ $('#grid').fadeOut(1000); }, 1000);
   //project: load external html
-    setTimeout(function(){ $('#project-page').fadeIn(500); }, 1000);
-    //loading external html
+    setTimeout(function(){ $('#project-page').fadeIn(1000); }, 1000);
+  //loading external html
     $.ajax({ url: 'projects/'+chosen_project+'.html',
             success: function(result) {
               $('#project-page').html(result);
+              //shuffling with tags
+              $('#project-page').on('click', '.tag', function(event) {
+                event.preventDefault();
+                var tag = $(this).attr('class').split(" ")[1];
+                $('header').find('.'+tag).trigger("click");
+              });
+              //activate light boxes for images
+              $('#project-page').on('click', '.lightboximg', function(event) {
+                event.preventDefault();
+                menu_view=true;
+                $('.lightbox').fadeIn(500);//tint
+                $('.menu_icon').fadeOut(500);
+                //alert('image url is '+ $(this).attr('src') );
+                $('.lightbox-target').find('img').attr('src', $(this).attr('src'));
+                //exit icon is clicked
+                $('.lightbox').on('click', '.exit', function(event) {
+                  event.preventDefault();
+                  $('.lightbox').fadeOut(500);
+                  $('.menu_icon').fadeIn(500);
+                  menu_view=false;
+                });
+                //that's all for now
+              });
             },
             error: function(request, errorType, errorMessage){
               alert('Error: '+errorType+', with message:'+errorMessage);
@@ -131,15 +156,20 @@ $(document).ready(function() {
     //remove all items from grid
     $('.item').hide();
     $('#grid div').removeClass('item');
-    //adjust positions for mobile_view
-    if(mobile_view){
-      $("header").animate({height: "28vh"});
-      $("#grid").animate({top: "28vh"});
-      $("#project-page").animate({top: "28vh"});
-    }
     //show grid, remove project
     $('#project-page').fadeOut(500);
     $('#grid').fadeIn(1000);
+    //adjust positions for mobile_view
+    if(mobile_view){
+      $("header").animate({height: "29vh"});
+      $("#grid").animate({top: "29vh"});
+      $("#project-page").animate({top: "29vh"});
+      if(!grid_view){
+        //refresh layout
+        $('#grid').masonry('reloadItems');
+        $('#grid').masonry('layout');
+      }
+    }
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
@@ -156,7 +186,6 @@ $(document).ready(function() {
     $('#grid .'+chosen_project_category).show();
     //refresh layout
     $('#grid').masonry('reloadItems');
-    //$('#grid').masonry( 'layoutItems', '.items', isStill )
     $('#grid').masonry('layout');
   });
 
@@ -167,15 +196,20 @@ $(document).ready(function() {
     //remove all items from grid
     $('.item').hide();
     $('#grid div').removeClass('item');
-    //adjust positions for mobile_view
-    if(mobile_view){
-      $("header").animate({height: "28vh"});
-      $("#grid").animate({top: "28vh"});
-      $("#project-page").animate({top: "28vh"});
-    }
     //show grid, remove project
     $('#project-page').fadeOut(500);
     $('#grid').fadeIn(500);
+    //adjust positions for mobile_view
+    if(mobile_view){
+      $("header").animate({height: "29vh"});
+      $("#grid").animate({top: "29vh"});
+      $("#project-page").animate({top: "29vh"});
+      if(!grid_view){
+        //refresh layout
+        $('#grid').masonry('reloadItems');
+        $('#grid').masonry('layout');
+      }
+    }
     grid_view=true;
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
@@ -185,6 +219,7 @@ $(document).ready(function() {
     $('.subsubmenu .'+chosen_project_subcategory).css('color','black');
     //add back items of chosen category
     if(chosen_project_subcategory=='all'){
+      //alert('chosen project category is: '+chosen_project_category);
       $('#grid .'+chosen_project_category).addClass('item');
       $('#grid .'+chosen_project_category).show();
     }
