@@ -81,6 +81,14 @@ $(document).ready(function() {
   var chosen_project_subcategory = 'interior';
 //on item click; expand navigation, remove grid, load project
   $('#grid').on('mousedown', '.item', function(event) {
+    //for touchscreens...
+    if($(this).find('.item_hidden').css("opacity")==0){
+      $('.item_hidden').css("opacity", "0");
+      $('.item_visible').css('filter','contrast(50%)');      
+      $(this).find('.item_hidden').css("opacity", "1");
+      $(this).find('.item_visible').css('filter','contrast(100%)');
+      return false;
+    }
     //remove hover content immediately
     grid_view=false;
     $(this).find('.item_hidden').css("opacity", "0");
@@ -141,6 +149,12 @@ $(document).ready(function() {
                   menu_view=false;
                 });
                 //that's all for now
+              });
+              //fade in images after they load
+              $(".lightboximg").load(function() {
+                  alert('image loaded!');
+                  //$(this).closest('figure').fadeIn(1000);
+                  //$('.loading').fadeOut(500);
               });
             },
             error: function(request, errorType, errorMessage){
