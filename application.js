@@ -81,26 +81,26 @@ $(document).ready(function() {
   var chosen_project_subcategory = 'interior';
 //on item click; expand navigation, remove grid, load project
   $('#grid').on('mousedown', '.item', function(event) {
+    event.preventDefault();
     //for touchscreens...
     if($(this).find('.item_hidden').css("opacity")==0){
       $('.item_hidden').css("opacity", "0");
-      $('.item_visible').css('filter','contrast(50%)');      
+      $('.item_visible').css('filter','contrast(50%)');
       $(this).find('.item_hidden').css("opacity", "1");
       $(this).find('.item_visible').css('filter','contrast(100%)');
       return false;
     }
-    //remove hover content immediately
-    grid_view=false;
-    $(this).find('.item_hidden').css("opacity", "0");
-    $(this).find('.item_visible').css('filter','contrast(50%)');
-    event.preventDefault();
-    $(window).scrollTop(0);
     //adjust positions for mobile_view
     if(mobile_view){
       $("header").animate({height: "29vh"});
       $("#grid").animate({top: "29vh"});
       $("#project-page").animate({top: "29vh"});
     }
+    //remove hover content immediately
+    grid_view=false;
+    $(this).find('.item_hidden').css("opacity", "0");
+    $(this).find('.item_visible').css('filter','contrast(50%)');
+    $(window).scrollTop(0);
     //record the tags of chosen project (split index might get confused when classes are added & removed)
     var cat = $(this).attr('class');
     chosen_project = cat.split(" ")[0];
@@ -150,7 +150,7 @@ $(document).ready(function() {
                 });
                 //that's all for now
               });
-              //fade in images after they load
+              //fade in images after each loads
               $(".lightboximg").load(function() {
                   alert('image loaded!');
                   //$(this).closest('figure').fadeIn(1000);
