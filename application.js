@@ -16,6 +16,8 @@ window.onload = function() {
 
 //enabling js after page loads
 $(document).ready(function() {
+  //object for hammer
+  var lbox = document.getElementsByClassName("lightbox");
 
 //querying for aspect ratio based on css sizing of header
   var hw = 100*parseInt($("header").width())/parseInt($(window).width());
@@ -167,10 +169,10 @@ $(document).ready(function() {
                       current_image=$(".colp2").find('.lightboximg:last');
                       $('.counter').text($(".lightboximg").length+'/'+$(".lightboximg").length);
                     }
-                    $(".lightbox-target").animate({left: '-90vw'}, 'slow', function() {
+                    $(".lightbox-target").animate({left: '90vw'}, 'slow', function() {
                       $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
                       $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
-                      $(".lightbox-target").css('left','90vw');
+                      $(".lightbox-target").css('left','-90vw');
                     });
                     $(".lightbox-target").animate({left: '10vw'}, 'slow', function() {
                       animation_on=false;
@@ -192,10 +194,10 @@ $(document).ready(function() {
                       //alert('current image is at: '+$(current_image).attr('src'));
                       $('.counter').text('1/'+$(".lightboximg").length);
                     }
-                    $(".lightbox-target").animate({left: '90vw'}, 'slow', function() {
+                    $(".lightbox-target").animate({left: '-90vw'}, 'slow', function() {
                       $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
                       $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
-                      $(".lightbox-target").css('left','-90vw');
+                      $(".lightbox-target").css('left','90vw');
                     });
                     $(".lightbox-target").animate({left: '10vw'}, 'slow', function() {
                       animation_on=false;
@@ -212,12 +214,14 @@ $(document).ready(function() {
                   }
                 });
                 //swipe events for touchscreen
-                $('.lightbox').on('swipeleft', function(event) {
-                  alert('ha, swiped left');
+                Hammer(lbox[0]).on("swipeleft", function() {
+                  $('.lightbox').find('.right-arrow').trigger("click")
                 });
-
+                Hammer(lbox[0]).on("swiperight", function() {
+                  $('.lightbox').find('.left-arrow').trigger("click")
+                });
               });
-            //that's all for now
+            //that's all with ajax for now
             },
             error: function(request, errorType, errorMessage){
               alert('Error: '+errorType+', with message:'+errorMessage);
