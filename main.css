@@ -221,6 +221,7 @@ p {
 	}
 	.lightbox figcaption {
 		font-size: 1.2vw;
+		bottom: 0vh;
 	}
 }
 .menu {/*content*/
@@ -251,7 +252,7 @@ p {
 		padding: 5vh 0;
 	}
 	.menu ul li a {
-		font-size: 1.8vw;
+		font-size: 1.2vw;
 		letter-spacing: 0.1vw;
 	}
 }
@@ -335,10 +336,10 @@ header .logo {/*position logo container*/
 /*sub-header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	.sub-header {
-		height: 8vh;
+		height: 12vh;
 		width: 58vw;
 		left: 22vw;
-		top: 13vh;
+		top: 14vh;
 		z-index: 2;
 	}
 }
@@ -352,11 +353,9 @@ header .logo {/*position logo container*/
 	display: inline;
 }
 .horizmenu ul li a {
-	text-decoration: none;
 	letter-spacing: 0.1vw;
 	font-size: 1.35vw;
 	padding: 0 0.5vw 1vh 0.5vw;
-	/*border: 0.1vh solid black;*/
 }
 .horizmenu ul li a:hover {
 	font-style: italic;
@@ -365,7 +364,7 @@ header .logo {/*position logo container*/
 .submenu {
 	width: 100%;
 	display: inline-block;
-	padding: 0 0 1vh 2vw;
+	padding-left: 2vw;
 }
 .submenu ul li {
 	padding: 0 1.5vw;
@@ -375,28 +374,29 @@ header .logo {/*position logo container*/
 	font-size: 3vw;
 }
 @media only screen and (min-aspect-ratio:3/4){
-	.submenu ul li {
-		padding: 0 2.5vw;
-	}
 	.submenu {/*tablet screen*/
 		padding: 2vh 0 2vh 4vw;
 	}
+	.submenu ul li {
+		padding: 0 2.5vw;
+	}
 }
 @media only screen and (min-aspect-ratio:16/10){
+	.horizmenu ul li a {/*wide screens*/
+		font-size: 1.2vw;
+		letter-spacing: 0.05vw;
+	}
 	.submenu {
 		padding: 0;
 	}
 	.submenu ul li {
 		padding: 0 5vw;
 	}
-	.submenu ul li a {/*wide screens*/
-		letter-spacing: 0.05vw;
-		font-size: 1.5vw;
-	}
 }
 /*subsubmenu text*/
 .subsubmenu {
 	width: 100%;
+	padding-top: 2vh;
 }
 .subsubmenu .arch, .subsubmenu .design, .subsubmenu .film {
 	display: none;
@@ -408,12 +408,17 @@ header .logo {/*position logo container*/
 	letter-spacing: 0.3vw;
 	font-size: 2.5vw;
 }
+@media only screen and (min-aspect-ratio:7/10){
+	.subsubmenu {
+		padding-top: 1vh;
+	}
+}
 @media only screen and (min-aspect-ratio:16/10){
 	.subsubmenu {/*big screen*/
 		top: 5vh;
 	}
 	.subsubmenu ul li a {
-		letter-spacing: 0.15vw;
+		letter-spacing: 0.05vw;
 		font-size: 1.2vw;
 	}
 }
@@ -471,7 +476,7 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:7/10){
 	#project-page .colp1 {
-		bottom: 10vw; /*sticky threshold for tablets*/
+		bottom: 8vw; /*sticky threshold for tablets*/
 	}
 }
 @media only screen and (min-aspect-ratio:16/10){
@@ -486,12 +491,11 @@ header .logo {/*position logo container*/
 		padding-right: 3%;
 		height: 50vw;
 		bottom: 4vw; /*sticky threshold for laptops & above*/
-		/*border-bottom: 0.01vh solid black;*/
 	}
 	#project-page .colp1 p {
-		margin: 3vh 0 5vh 0;
+		margin: 3vh 0 5vh 0vh;
 		font-size: 1.2vw;
-		line-height: 2.5vw;
+		line-height: 2vw;
 	}
 	#project-page .colp2 {
 		width: 64%;
@@ -500,15 +504,12 @@ header .logo {/*position logo container*/
 		font-size: 1.2vw;
 		line-height: 2vw;
 	}
+	#project-page .colp2 .fit-height {
+		text-align: center;
+	}
 	#project-page .colp2 .fit-height img {
 		width: auto;
-		height: 70vh;
-	}
-	.fit-height:nth-of-type(odd) {
-		float: left;
-	}
-	.fit-height:nth-of-type(even) {
-		float: right;
+		height: 65vh;
 	}
 	#project-page .colp2 figcaption {
 		font-size: 1.2vw;
