@@ -212,6 +212,9 @@ $(document).ready(function() {
                   }
                 });
                 //swipe events for touchscreen
+                $('.lightbox').on('swipeleft', function(event) {
+                  alert('ha, swiped left');
+                });
 
               });
             //that's all for now
