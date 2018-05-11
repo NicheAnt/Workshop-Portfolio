@@ -120,7 +120,7 @@ p {
 }
 .lightbox-target {
 	position: fixed;
-	top: 8vh;
+	top: 6vh;
 	left: 10vw;
 	height: 84%;
 	width: 80%;
@@ -164,7 +164,7 @@ p {
 	height: 5vh;
 	width: 70vw;
 	left: 15vw;
-	bottom: 8vh;
+	bottom: 4vh;
 	color: white;
 	font-family: "gill_sans";
 	font-size: 3.5vw;
@@ -173,8 +173,10 @@ p {
 .lightbox figcaption {
 	color: white;
 	font-family: "gill_sans";
-	font-size: 2.5vw;
-	text-align: center;	
+	font-size: 3.5vw;
+	text-align: center;
+	position: relative;
+	bottom: 6vh;
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu_container {/*icon plus content*/
@@ -184,21 +186,38 @@ p {
 	.menu_container .logo {/*position logo container*/
 		padding-top: 5vh;
 	}
+	.lightbox-target .ghost-element {
+		display: none;
+	}
 	.lightbox-target {
-		top: 12vh;
+		top: 10vh;
+		height: 80%;
+		width: 80%;
 	}
 	.lightbox-target img {
 		height: 100%;
 		width: auto;
 	}
+	.lightbox .exit {
+		top: 3.5vh;
+		right: 3vw;
+	}
 	.lightbox .exit img {
 		width: 2vw;
+	}
+	.lightbox .left-arrow {
+		left: 10vw;
+	}
+	.lightbox .right-arrow {
+		left: auto;
+		right: 10vw;
 	}
 	.lightbox .left-arrow img, .lightbox .right-arrow img {
 		width: 4vw;
 	}
 	.lightbox .counter {
-		bottom: 1vh;
+		bottom: 0vh;
+		font-size: 1.5vw;
 	}
 	.lightbox figcaption {
 		font-size: 1.2vw;
