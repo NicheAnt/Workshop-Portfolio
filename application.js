@@ -2,6 +2,8 @@
 var grid_view=true;
 var mobile_view=false;
 var menu_view=false;
+var animation_on = false;
+var current_image;
 
 //loading sequence for home-page: after everything loads
 window.onload = function() {
@@ -133,14 +135,14 @@ $(document).ready(function() {
                 var tag = $(this).attr('class').split(" ")[1];
                 $('header').find('.'+tag).trigger("click");
               });
-              //activate light boxes for images
+            //activate light box for images
               $('#project-page').on('click', '.lightboximg', function(event) {
                 event.preventDefault();
+                current_image = $(this);
                 menu_view=true;
                 $('.lightbox').fadeIn(500);//tint
                 $('.menu_icon').fadeOut(500);
-                //alert('image url is '+ $(this).attr('src') );
-                $('.lightbox-target').find('img').attr('src', $(this).attr('src'));
+                $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
                 //exit icon is clicked
                 $('.lightbox').on('click', '.exit', function(event) {
                   event.preventDefault();
@@ -148,14 +150,71 @@ $(document).ready(function() {
                   $('.menu_icon').fadeIn(500);
                   menu_view=false;
                 });
-                //that's all for now
+                //insert content in counter & caption
+                $('.counter').text($(".lightboximg").index($(this))+1+'/'+$(".lightboximg").length);
+                $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
+                //left-arrow is clicked
+                $('.lightbox').on('click', '.left-arrow', function(event) {
+                  if(!animation_on){
+                    animation_on=true;
+                    event.preventDefault();
+                    //alert('current index is: '+$(".lightboximg").index($(current_image)));
+                    if($(".lightboximg").index($(current_image))>0){
+                      current_image=$(current_image).closest('figure').prev().find('img');
+                      $('.counter').text($(".lightboximg").index($(current_image))+1+'/'+$(".lightboximg").length);
+                    }
+                    else {
+                      current_image=$(".colp2").find('.lightboximg:last');
+                      $('.counter').text($(".lightboximg").length+'/'+$(".lightboximg").length);
+                    }
+                    $(".lightbox-target").animate({left: '-90vw'}, 'slow', function() {
+                      $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
+                      $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
+                      $(".lightbox-target").css('left','90vw');
+                    });
+                    $(".lightbox-target").animate({left: '10vw'}, 'slow', function() {
+                      animation_on=false;
+                    });
+                  }
+                });
+                //right-arrow is clicked
+                $('.lightbox').on('click', '.right-arrow', function(event) {
+                  if(!animation_on){
+                    animation_on=true;
+                    event.preventDefault();
+                    //alert('index is: '+$(".lightboximg").index($(current_image)));
+                    if($(".lightboximg").index($(current_image))+1<$(".lightboximg").length){
+                      current_image=$(current_image).closest('figure').next().find('img');
+                      $('.counter').text($(".lightboximg").index($(current_image))+1+'/'+$(".lightboximg").length);
+                    }
+                    else {
+                      current_image=$(".colp2").find('.lightboximg:first');
+                      //alert('current image is at: '+$(current_image).attr('src'));
+                      $('.counter').text('1/'+$(".lightboximg").length);
+                    }
+                    $(".lightbox-target").animate({left: '90vw'}, 'slow', function() {
+                      $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
+                      $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
+                      $(".lightbox-target").css('left','-90vw');
+                    });
+                    $(".lightbox-target").animate({left: '10vw'}, 'slow', function() {
+                      animation_on=false;
+                    });
+                  }
+                });
+                //arrow keys
+                $(document).keydown(function(event) {
+                  if(event.which==37){
+                    $('.lightbox').find('.left-arrow').trigger("click");
+                  }
+                  else if(event.which==39){
+                    $('.lightbox').find('.right-arrow').trigger("click");
+                  }
+                });
+                //swipe events for touchscreen
+
               });
-              //fade in images after each loads
-              $(".lightboximg").load(function() {
-                  alert('image loaded!');
-                  //$(this).closest('figure').fadeIn(1000);
-                  //$('.loading').fadeOut(500);
-              });
+            //that's all for now
             },
             error: function(request, errorType, errorMessage){
               alert('Error: '+errorType+', with message:'+errorMessage);

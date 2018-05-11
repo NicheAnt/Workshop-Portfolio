@@ -120,16 +120,61 @@ p {
 }
 .lightbox-target {
 	position: fixed;
-	top: 18vh;
+	top: 8vh;
 	left: 10vw;
-	height: 80%;
+	height: 84%;
 	width: 80%;
 	text-align: center;
 }
+.lightbox-target .ghost-element {
+	height: 100%;
+	width: 0.1%;
+	display: inline-block;
+	vertical-align: middle;
+}
 .lightbox-target img {
 	height: auto;
-	width: 100%;
+	width: 98%;
+	display: inline-block;
 	vertical-align: middle;
+}
+.lightbox .exit {
+	position: fixed;
+	top: 3.5vh;
+	right: 5vw;
+}
+.lightbox .exit img {
+	width: 4vw;
+}
+.lightbox .left-arrow, .lightbox .right-arrow {
+	position: fixed;
+	top: 50vh;
+	left: 3vw;
+	z-index: 4;
+}
+.lightbox .right-arrow {
+	left: auto;
+	right: 3vw;
+}
+.lightbox .left-arrow img, .lightbox .right-arrow img {
+	width: 8vw;
+}
+.lightbox .counter {
+	position: fixed;
+	height: 5vh;
+	width: 70vw;
+	left: 15vw;
+	bottom: 8vh;
+	color: white;
+	font-family: "gill_sans";
+	font-size: 3.5vw;
+	text-align: center;
+}
+.lightbox figcaption {
+	color: white;
+	font-family: "gill_sans";
+	font-size: 2.5vw;
+	text-align: center;	
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu_container {/*icon plus content*/
@@ -145,6 +190,18 @@ p {
 	.lightbox-target img {
 		height: 100%;
 		width: auto;
+	}
+	.lightbox .exit img {
+		width: 2vw;
+	}
+	.lightbox .left-arrow img, .lightbox .right-arrow img {
+		width: 4vw;
+	}
+	.lightbox .counter {
+		bottom: 1vh;
+	}
+	.lightbox figcaption {
+		font-size: 1.2vw;
 	}
 }
 .menu {/*content*/
@@ -187,14 +244,6 @@ p {
 .exit_icon img {
 	width: 5vw;
 }
-.lightbox .exit {
-	position: fixed;
-	top: 5vh;
-	right: 3.5vw;
-}
-.lightbox .exit img {
-	width: 4vw;
-}
 @media only screen and (min-aspect-ratio:3/4){
 	.exit_icon {/*tablet screen*/
 		padding-top: 9.5vh;
@@ -206,9 +255,6 @@ p {
 	}
 	.exit_icon img {
 		width: 2.5vw;
-	}
-	.lightbox .exit img {
-		width: 2vw;
 	}
 }
 
@@ -384,10 +430,13 @@ header .logo {/*position logo container*/
 	width: 46%;
 	text-align: justify;
 }
-#project-page .colp2 figure {
-	/*visibility: hidden; load with jq*/
+#project-page .colp2 figcaption {
+	padding: 0;
+	font-family: "gill_sans";
+	font-size: 2.5vw;
+	text-align: center;
 }
-#project-page .colp2 figure img {
+#project-page .colp2 figure {
 	margin: 3vh 0;
 }
 #project-page .colp1 p {
@@ -441,6 +490,12 @@ header .logo {/*position logo container*/
 	}
 	.fit-height:nth-of-type(even) {
 		float: right;
+	}
+	#project-page .colp2 figcaption {
+		font-size: 1.2vw;
+	}
+	#project-page .colp2 figure {
+		margin: 5vh 0;
 	}
 }
 /*masonry grid basics*/
