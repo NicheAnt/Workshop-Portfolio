@@ -114,10 +114,6 @@ p {
 	height: auto;
 	padding-top: 3vh;
 }
-.lightbox {
-	filter: opacity(95%);
-	background-color: black;
-}
 .lightbox-target {
 	position: fixed;
 	top: 6vh;
@@ -582,7 +578,7 @@ header .logo {/*position logo container*/
 }
 /*loading animation*/
 .loading {
-	z-index: 3;
+	z-index: 5;
 	position: fixed;
 	top: 7%;
 	left: 11%;
