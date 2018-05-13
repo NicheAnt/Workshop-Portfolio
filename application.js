@@ -175,6 +175,10 @@ $(document).ready(function() {
                   });
                 }
               }
+              setTimeout(function(){
+                $('.logo').fadeIn(500);
+                $('.loading').fadeOut(500);
+              }, 10000);
               //shuffling with tags
               $('#project-page').on('click', '.tag', function(event) {
                 event.preventDefault();
@@ -301,6 +305,9 @@ $(document).ready(function() {
     grid_view=true;
     //update url.
     window.history.pushState('','','index.html');
+    $('.logo').fadeIn(500);
+    $('.loading').fadeOut(500);
+
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
     chosen_project_category = $(this).attr('class');
@@ -343,6 +350,9 @@ $(document).ready(function() {
     grid_view=true;
     //update url
     window.history.pushState('','','index.html');
+    $('.logo').fadeIn(500);
+    $('.loading').fadeOut(500);
+    
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
     chosen_project_subcategory = $(this).attr('class');
