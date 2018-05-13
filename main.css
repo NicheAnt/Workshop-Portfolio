@@ -115,7 +115,7 @@ p {
 	padding-top: 3vh;
 }
 .lightbox {
-	filter: opacity(95%);
+	filter: opacity(75%);
 	background-color: black;
 }
 .lightbox-target {
