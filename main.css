@@ -93,7 +93,7 @@ p {
 /*dropdown menu and also lightbox*/
 .menu_open, .lightbox { /*tint*/
 	display: none;
-	z-index: 3;
+	z-index: 4;
 	position: fixed;
 	top: 0;
 	width: 100vw;
@@ -294,6 +294,7 @@ header .logo {/*position logo container*/
 	width: auto;
 	height: auto;
 	padding-top: 3vh;
+	display: none;
 }
 .logo img {/*size the logo*/
 	width: 18vw;
@@ -445,6 +446,7 @@ header .logo {/*position logo container*/
 	bottom: 40vw; /*sticky threshold for phones*/
 	height: 120vw;
 	padding-right: 3%;
+	float: left;
 }
 #project-page .colp1 a:hover {
 	font-style: italic;
@@ -452,7 +454,8 @@ header .logo {/*position logo container*/
 #project-page .colp2 {
 	display: inline-block;
 	width: 46%;
-	text-align: justify;
+	text-align: justify;	
+	float: left;
 }
 #project-page .colp2 figcaption {
 	padding: 0;
@@ -462,6 +465,9 @@ header .logo {/*position logo container*/
 }
 #project-page .colp2 figure {
 	margin: 3vh 0;
+}
+#project-page .colp2 figure img {
+	display: none;
 }
 #project-page .colp1 p {
 	margin-top: 1vh;
@@ -473,6 +479,7 @@ header .logo {/*position logo container*/
 	font-size: 3vw;
 	line-height: 4.5vw;
 	color: black;
+	min-height: 18vh;
 }
 @media only screen and (min-aspect-ratio:7/10){
 	#project-page .colp1 {
@@ -484,7 +491,7 @@ header .logo {/*position logo container*/
 	#project-page {
 		left: 10vw;
 		width: 80vw;
-		top: 30vh;
+		top: 32vh;
 	}
 	#project-page .colp1 {
 		width: 26vw !important;
@@ -503,6 +510,7 @@ header .logo {/*position logo container*/
 	#project-page .colp2 p {
 		font-size: 1.2vw;
 		line-height: 2vw;
+		min-height: 38vh;
 	}
 	#project-page .colp2 .fit-height {
 		text-align: center;
@@ -520,7 +528,6 @@ header .logo {/*position logo container*/
 }
 /*masonry grid basics*/
 #grid {
-	display: none;
 	z-index: 1;
 	position: absolute;
 	top: 24vh;
@@ -542,7 +549,7 @@ header .logo {/*position logo container*/
 /*grid big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	#grid {
-		top: 30vh;
+		top: 32vh;
 		left: 9.5vw;
 		width: 81vw;
 	}
@@ -575,10 +582,10 @@ header .logo {/*position logo container*/
 }
 /*loading animation*/
 .loading {
-	z-index: 5;
+	z-index: 3;
 	position: fixed;
-	top: 50%;
-  left: 47%;
+	top: 7%;
+	left: 11%;
 }
 .loading-bar {
   display: inline-block;
@@ -590,8 +597,8 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.loading {
-
-	  left: 49%;
+		top: 13%;
+		left: 13%;
 	}
 	.loading-bar {
 		width: 0.3vw;

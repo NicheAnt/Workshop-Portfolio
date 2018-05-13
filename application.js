@@ -1,13 +1,24 @@
+//function for parsing url for parameters (taken from http://jennamolby.com/how-to-display-dynamic-content-on-a-page-using-url-parameters/)
+function getParameterByName(name, url) {
+	if (!url) url = window.location.href;
+	name = name.replace(/[\[\]]/g, "\\$&");
+	var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+			results = regex.exec(url);
+	if (!results) return null;
+	if (!results[2]) return '';
+	return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 //global variables
 var grid_view=true;
 var mobile_view=false;
 var menu_view=false;
 var animation_on = false;
 var current_image;
+var dynamic_project = getParameterByName('project');//decide content of page based on url
 
 //loading sequence for home-page: after everything loads
 window.onload = function() {
-  $('#grid').fadeIn(1000);
+  $('.logo').fadeIn(1000);
   $('.loading').fadeOut(500);
   //refresh layout
   $('#grid').masonry('reloadItems');
@@ -16,10 +27,11 @@ window.onload = function() {
 
 //enabling js after page loads
 $(document).ready(function() {
+
   //object for hammer
   var lbox = document.getElementsByClassName("lightbox");
 
-//querying for aspect ratio based on css sizing of header
+  //querying for aspect ratio based on css sizing of header
   var hw = 100*parseInt($("header").width())/parseInt($(window).width());
   //alert('header width is: '+hw+'%');
   if(hw>81) { mobile_view=true;}
@@ -83,11 +95,12 @@ $(document).ready(function() {
   var chosen_project = 'proj1';
   var chosen_project_category = 'arch';
   var chosen_project_subcategory = 'interior';
+
 //on item click; expand navigation, remove grid, load project
   $('#grid').on('mousedown', '.item', function(event) {
     event.preventDefault();
     //for touchscreens...
-    if($(this).find('.item_hidden').css("opacity")==0){
+    if($(this).find('.item_hidden').css("opacity")==0 && dynamic_project==null){
       $('.item_hidden').css("opacity", "0");
       $('.item_visible').css('filter','contrast(50%)');
       $(this).find('.item_hidden').css("opacity", "1");
@@ -110,6 +123,8 @@ $(document).ready(function() {
     chosen_project = cat.split(" ")[0];
     chosen_project_category = cat.split(" ")[1];
     chosen_project_subcategory = cat.split(" ")[2];
+    //update url
+    window.history.pushState('','','?project='+chosen_project);
     //remove grid elements except chosen one
     $(this).siblings().hide();
     $(this).siblings().removeClass('item');
@@ -131,6 +146,35 @@ $(document).ready(function() {
     $.ajax({ url: 'projects/'+chosen_project+'.html',
             success: function(result) {
               $('#project-page').html(result);
+              //loading sequenc: as each image loads
+              var imgDefer = document.getElementsByClassName('lightboximg');
+              var imgsloaded =0;
+              if(imgDefer.length>0){//loading animation instead of logo
+                $('.logo').fadeOut(500);
+                $('.loading').fadeIn(500);
+              }
+              for (var i=0; i<imgDefer.length; i++) {
+                if(imgDefer[i].complete) {//check if it's already in cache
+                  $(this).closest('figure').addClass('lightboxfig_active');
+                  $(this).fadeIn(500);
+                  imgsloaded++;
+                  if(imgsloaded==imgDefer.length){
+                    $('.logo').fadeIn(500);
+                    $('.loading').fadeOut(500);
+                  }
+                }
+                else {//do same on load
+                  $(imgDefer[i]).on('load', function(){
+                    $(this).closest('figure').addClass('lightboxfig_active');
+                    $(this).fadeIn(500);
+                    imgsloaded++;
+                    if(imgsloaded==imgDefer.length){
+                      $('.logo').fadeIn(500);
+                      $('.loading').fadeOut(500);
+                    }
+                  });
+                }
+              }
               //shuffling with tags
               $('#project-page').on('click', '.tag', function(event) {
                 event.preventDefault();
@@ -161,12 +205,12 @@ $(document).ready(function() {
                     animation_on=true;
                     event.preventDefault();
                     //alert('current index is: '+$(".lightboximg").index($(current_image)));
-                    if($(".lightboximg").index($(current_image))>0){
-                      current_image=$(current_image).closest('figure').prev().find('img');
+                    if($(current_image).closest('figure').prev('.lightboxfig_active').length>0){
+                      current_image=$(current_image).closest('figure').prev('.lightboxfig_active').find('img');
                       $('.counter').text($(".lightboximg").index($(current_image))+1+'/'+$(".lightboximg").length);
                     }
                     else {
-                      current_image=$(".colp2").find('.lightboximg:last');
+                      current_image=$(".colp2").find('.lightboxfig_active:last').find('img');
                       $('.counter').text($(".lightboximg").length+'/'+$(".lightboximg").length);
                     }
                     $(".lightbox-target").animate({left: '90vw'}, 'slow', function() {
@@ -185,12 +229,12 @@ $(document).ready(function() {
                     animation_on=true;
                     event.preventDefault();
                     //alert('index is: '+$(".lightboximg").index($(current_image)));
-                    if($(".lightboximg").index($(current_image))+1<$(".lightboximg").length){
-                      current_image=$(current_image).closest('figure').next().find('img');
+                    if($(current_image).closest('figure').next('.lightboxfig_active').length>0){
+                      current_image=$(current_image).closest('figure').next('.lightboxfig_active').find('img');
                       $('.counter').text($(".lightboximg").index($(current_image))+1+'/'+$(".lightboximg").length);
                     }
                     else {
-                      current_image=$(".colp2").find('.lightboximg:first');
+                      current_image=$(".colp2").find('.lightboxfig_active:first').find('img');
                       //alert('current image is at: '+$(current_image).attr('src'));
                       $('.counter').text('1/'+$(".lightboximg").length);
                     }
@@ -228,6 +272,10 @@ $(document).ready(function() {
             }
     });//ajax
   });
+  //check for extended url, and open projects
+  if(dynamic_project != null) {
+    $('#grid').find('.'+dynamic_project).trigger("mousedown");
+  }
 
 //shuffling with submenu
   $('.submenu').on('click', 'a', function(event) {
@@ -251,6 +299,8 @@ $(document).ready(function() {
       }
     }
     grid_view=true;
+    //update url.
+    window.history.pushState('','','index.html');
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
     chosen_project_category = $(this).attr('class');
@@ -291,6 +341,8 @@ $(document).ready(function() {
       }
     }
     grid_view=true;
+    //update url
+    window.history.pushState('','','index.html');
     $('.item_hidden').css("opacity", "0");
     $('.item_visible').css('filter','contrast(50%)');
     chosen_project_subcategory = $(this).attr('class');
@@ -312,4 +364,4 @@ $(document).ready(function() {
     $('#grid').masonry('layout');
   });
 
-});//full code
+});//full dom code
