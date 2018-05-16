@@ -116,6 +116,7 @@ $(document).ready(function() {
 //on item click; expand navigation, remove grid, load project
   $('#grid').on('mousedown', '.item', function(event) {
     event.preventDefault();
+		grid_view=false;
     //for touchscreens...
     if($(this).find('.item_hidden').css("opacity")==0 && dynamic_project==null){
       $('.item_hidden').css("opacity", "0");
@@ -131,7 +132,6 @@ $(document).ready(function() {
       $("#project-page").animate({top: "29vh"});
     }
     //remove hover content immediately
-    grid_view=false;
     $(this).find('.item_hidden').css("opacity", "0");
     $(this).find('.item_visible').css('filter','contrast(50%)');
     $(window).scrollTop(0);
@@ -156,9 +156,9 @@ $(document).ready(function() {
       $('.horizmenu .'+cat.split(" ")[i]).css('color','black');
     }
   //remove grid
-    setTimeout(function(){ $('#grid').fadeOut(1000); }, 1000);
+    setTimeout(function(){ $('#grid').fadeOut(2000); }, 1000);
   //project: load external html
-    setTimeout(function(){ $('#project-page').fadeIn(1000); }, 1000);
+    $('#project-page').fadeIn(1000);
   //loading external html
     $.ajax({ url: 'projects/'+chosen_project+'.html',
             success: function(result) {
