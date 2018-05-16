@@ -153,12 +153,13 @@ $(document).ready(function() {
               if(imgDefer.length>0){//loading animation instead of logo
                 $('.logo').fadeOut(500);
                 $('.loading').fadeIn(500);
-              }
+              }							
               for (var i=0; i<imgDefer.length; i++) {
                 if(imgDefer[i].complete) {//check if it's already in cache
-                  $(this).closest('figure').addClass('lightboxfig_active');
-                  $(this).fadeIn(500);
+                  $(imgDefer[i]).closest('figure').addClass('lightboxfig_active');
+                  $(imgDefer[i]).fadeIn(500);
                   imgsloaded++;
+									//alert('cached image number: '+i);
                   if(imgsloaded==imgDefer.length){
                     $('.logo').fadeIn(500);
                     $('.loading').fadeOut(500);
@@ -169,6 +170,7 @@ $(document).ready(function() {
                     $(this).closest('figure').addClass('lightboxfig_active');
                     $(this).fadeIn(500);
                     imgsloaded++;
+										//alert('just loaded image number: '+i);
                     if(imgsloaded==imgDefer.length){
                       $('.logo').fadeIn(500);
                       $('.loading').fadeOut(500);
@@ -283,6 +285,7 @@ $(document).ready(function() {
 //shuffling with submenu
   $('.submenu').on('click', 'a', function(event) {
     event.preventDefault();
+		$('#project-page').html('');
     $(window).scrollTop(0);
     //remove all items from grid
     $('.item').hide();
@@ -327,6 +330,7 @@ $(document).ready(function() {
 //shuffling with subsubmenu
   $('.subsubmenu').on('click', 'a', function(event) {
     event.preventDefault();
+		$('#project-page').html('');
     $(window).scrollTop(0);
     //remove all items from grid
     $('.item').hide();
