@@ -28,7 +28,6 @@ window.onload = function() {
 
 //enabling js after page loads
 $(document).ready(function() {
-
   //object for hammer
   var lbox = document.getElementsByClassName("lightbox");
 
@@ -46,6 +45,23 @@ $(document).ready(function() {
       percentPosition: true
     });
   });
+	//loading sequence: show images after they load
+	var gridObj = document.getElementById("grid");
+	var imgArray = gridObj.getElementsByTagName("img");
+	for (var j=0; j<imgArray.length; j++) {
+		if(imgArray[j].complete) {//check if it's already in cache
+			$(imgArray[j]).fadeIn(500);
+			//refresh layout
+		  $('#grid').masonry('layout');
+		}
+		else {//do same on load
+			$(imgArray[j]).on('load', function(){
+				$(this).fadeIn(500);
+				//refresh layout
+			  $('#grid').masonry('layout');
+			});
+		}
+	}
 
 //menu
   //open menu on click
@@ -153,7 +169,7 @@ $(document).ready(function() {
               if(imgDefer.length>0){//loading animation instead of logo
                 $('.logo').fadeOut(500);
                 $('.loading').fadeIn(500);
-              }							
+              }
               for (var i=0; i<imgDefer.length; i++) {
                 if(imgDefer[i].complete) {//check if it's already in cache
                   $(imgDefer[i]).closest('figure').addClass('lightboxfig_active');

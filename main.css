@@ -465,6 +465,9 @@ header .logo {/*position logo container*/
 #project-page .colp2 figure img {
 	display: none;
 }
+#project-page .colp2 .lightboxfig_active img {
+	display: inline-block;
+}
 #project-page .colp1 p {
 	margin-top: 1vh;
 	font-size: 3vw;
@@ -575,6 +578,9 @@ header .logo {/*position logo container*/
 #grid .item_visible {
 	filter: contrast(50%);
 	transition: filter 1s;
+}
+#grid .item_visible img {
+	display: none;/*fade in with js*/
 }
 /*loading animation*/
 .loading {
