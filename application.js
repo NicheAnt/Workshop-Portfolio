@@ -109,9 +109,9 @@ $(document).ready(function() {
 
 //project page
   //initialize global variables of chosen project
-  var chosen_project = 'proj1';
-  var chosen_project_category = 'arch';
-  var chosen_project_subcategory = 'interior';
+  var chosen_project;
+  var chosen_project_category;
+  var chosen_project_subcategory;
 
 //on item click; expand navigation, remove grid, load project
   $('#grid').on('mousedown', '.item', function(event) {
@@ -138,8 +138,10 @@ $(document).ready(function() {
     //record the tags of chosen project (split index might get confused when classes are added & removed)
     var cat = $(this).attr('class');
     chosen_project = cat.split(" ")[0];
-    chosen_project_category = cat.split(" ")[1];
-    chosen_project_subcategory = cat.split(" ")[2];
+		if (chosen_project_category==null) {//if submenus haven't been activated
+			chosen_project_category = cat.split(" ")[1];
+	    chosen_project_subcategory = cat.split(" ")[2];
+		}
     //update url
     window.history.pushState('','','?project='+chosen_project);
     //remove grid elements except chosen one
@@ -149,11 +151,13 @@ $(document).ready(function() {
     $('#grid').masonry('reloadItems');
     $('#grid').masonry('layout');
     //show correct subsubmenu
+		$('.subsubmenu ul').css('display','none');
     $('.subsubmenu .'+chosen_project_category).css('display','inline-block');
     //remove, then add, highlights (including additional categories)
     $('.horizmenu a').css('color','grey');
+		$('.submenu .'+chosen_project_category).css('color','black');
     for (i=1; cat.split(" ")[i] != 'item'; i++) {
-      $('.horizmenu .'+cat.split(" ")[i]).css('color','black');
+      $('.subsubmenu .'+cat.split(" ")[i]).css('color','black');
     }
   //remove grid
     setTimeout(function(){ $('#grid').fadeOut(2000); }, 1000);
