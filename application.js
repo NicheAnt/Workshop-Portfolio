@@ -12,6 +12,7 @@ function getParameterByName(name, url) {
 var grid_view=true;
 var mobile_view=false;
 var menu_view=false;
+var metamenu_view=false;
 var animation_on = false;
 var current_image;
 var dynamic_project = getParameterByName('project');//decide content of page based on url
@@ -74,7 +75,7 @@ $(document).ready(function() {
   });
   //exit menu; 1.escape key is pressed
   $(document).keydown(function(event) {
-    if (menu_view==true){
+    if(menu_view==true && metamenu_view==false){
       if(event.which==27){
         menu_view=false;
         $('.menu_container').fadeOut(300);
@@ -83,15 +84,31 @@ $(document).ready(function() {
         $('.lightbox').fadeOut(500);
       }
     }
+		else if (menu_view==true && metamenu_view==true) {
+			metamenu_view=false;
+			$('.menu_content').fadeOut(300);
+			$('.menu').fadeIn(2000);
+		}
   });
   //2.exit icon is clicked
   $('.menu_container').on('click', '.exit_icon', function() {
-    if (menu_view==true){
+    if(menu_view==true && metamenu_view==false){
       menu_view=false;
       $('.menu_container').fadeOut(300);
       $('.menu_open').fadeOut(500);
       $('.menu_icon').fadeIn(1000);
     }
+		else if (menu_view==true && metamenu_view==true) {
+			metamenu_view=false;
+			$('.menu_content').fadeOut(300);
+			$('.menu').fadeIn(2000);
+		}
+  });
+	//click item within this menu
+  $('.menu').on('click', 'a', function() {
+    metamenu_view=true;
+    $('.menu').fadeOut(300);
+    $('.'+$(this).attr('class')).fadeIn(2000);
   });
 
 //hover-tags (only when in grid-view)

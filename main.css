@@ -231,7 +231,6 @@ p {
 }
 .menu ul li a {
 	text-decoration: none;
-	font-weight: 400;
 	font-size: 6vw;
 	letter-spacing: 0.6vw;
 	transition: color 0.5s;
@@ -240,37 +239,65 @@ p {
 .menu ul li a:focus, .menu ul li a:hover {
 	color: white;/*turn links whte on hover*/
 }
+.menu_content {
+	display: none;
+	position: absolute;
+	width: 90%;
+	top: 18vh;
+	text-align: left;
+}
+.menu_content h2 {
+	color: white;
+	font-size: 6vw;
+	font-weight: bold;
+}
+.menu_content p {
+	color: white;
+	font-size: 3.5vw;
+	font-weight: bold;
+}
 @media only screen and (min-aspect-ratio:16/10){
 	.menu {
-		top: 35vh;/*position of links in big screens*/
+		top: 32vh;/*position of links in big screens*/
 	}
 	.menu ul li {/*padding list items*/
-		padding: 5vh 0;
+		padding: 4vh 0;
 	}
 	.menu ul li a {
-		font-size: 1.2vw;
+		font-size: 18pt;
 		letter-spacing: 0.1vw;
+	}
+	.menu_content {
+		width: 100%;
+		top: 40vh;
+	}
+	.menu_content h2 {
+		font-size: 18pt;
+	}
+	.menu_content p {
+		font-size: 1.2vw;
+		line-height: 2vw;
 	}
 }
 .exit_icon {
 	float: right;
 	width: auto;
-	padding-top: 8.5vh;
+	padding-top: 5.5vh;
 }
 .exit_icon img {
-	width: 5vw;
+	width: 10vw;
 }
 @media only screen and (min-aspect-ratio:3/4){
 	.exit_icon {/*tablet screen*/
-		padding-top: 9.5vh;
+		padding-top: 10vh;
 	}
 }
 @media only screen and (min-aspect-ratio:16/10) {
 	.exit_icon {/*wider screens*/
-		padding-top: 13vh;
+		padding-top: 11vh;
 	}
 	.exit_icon img {
-		width: 2.5vw;
+		width: 4vw;
 	}
 }
 
@@ -300,10 +327,15 @@ header .logo {/*position logo container*/
 	float: right;
 	width: auto;
 	height: auto;
-	padding-top: 3vh;
+	padding-top: 5.5vh;
 }
 .menu_icon img {
-	width: 6vw;
+	width: 10vw;
+}
+@media only screen and (min-aspect-ratio:3/4){
+	.menu_icon {/*tablet screen*/
+		padding-top: 10vh;
+	}
 }
 /*header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
@@ -316,8 +348,11 @@ header .logo {/*position logo container*/
 	.logo img{
 		width: 9vw;
 	}
+	.menu_icon {
+		padding-top: 9vh;
+	}
 	.menu_icon img {
-		width: 2.8vw;
+		width: 4vw;
 	}
 }
 /*sub-header basic*/
