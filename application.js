@@ -86,8 +86,8 @@ $(document).ready(function() {
     }
 		else if (menu_view==true && metamenu_view==true) {
 			metamenu_view=false;
-			$('.menu_content').fadeOut(300);
-			$('.menu').fadeIn(2000);
+			$('.menu_content').css('display', 'none');
+			$('.menu').fadeIn(1000);
 		}
   });
   //2.exit icon is clicked
@@ -100,8 +100,8 @@ $(document).ready(function() {
     }
 		else if (menu_view==true && metamenu_view==true) {
 			metamenu_view=false;
-			$('.menu_content').fadeOut(300);
-			$('.menu').fadeIn(2000);
+			$('.menu_content').css('display', 'none');
+			$('.menu').fadeIn(1000);
 		}
   });
 	//click item within this menu

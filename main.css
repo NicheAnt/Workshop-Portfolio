@@ -131,6 +131,7 @@ p {
 .lightbox-target img {
 	height: auto;
 	width: 98%;
+	max-width: 80vw;
 	display: inline-block;
 	vertical-align: middle;
 }
@@ -278,6 +279,15 @@ p {
 		font-size: 1.2vw;
 		line-height: 2vw;
 	}
+	.menu_content img {
+		width: 4vw;
+		margin: 2vw 1.5vw 0 0;
+		height: auto;
+		vertical-align: middle;
+	}
+	.menu_content .insta_icon img {
+		width: 4.6vw;
+	}
 }
 .exit_icon {
 	float: right;
@@ -294,7 +304,7 @@ p {
 }
 @media only screen and (min-aspect-ratio:16/10) {
 	.exit_icon {/*wider screens*/
-		padding-top: 11vh;
+		padding-top: 10.5vh;
 	}
 	.exit_icon img {
 		width: 4vw;
@@ -349,7 +359,7 @@ header .logo {/*position logo container*/
 		width: 9vw;
 	}
 	.menu_icon {
-		padding-top: 9vh;
+		padding-top: 8.5vh;
 	}
 	.menu_icon img {
 		width: 4vw;
