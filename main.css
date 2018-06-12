@@ -58,6 +58,14 @@ display: none;
 ::-moz-scrollbar {
 display: none;
 }
+/*toggling mobile/pc content*/
+.pc-content {
+	display: none;
+}
+@media only screen and (min-aspect-ratio:16/10){
+	.pc-content {	display: block;	}
+	.mobile-content {	display: none; }
+}
 /*general: color and font*/
 body {
   background-color: white;
@@ -244,7 +252,7 @@ p {
 	display: none;
 	position: absolute;
 	width: 90%;
-	top: 18vh;
+	top: 21vh;
 	text-align: left;
 }
 .menu_content h2 {
@@ -254,8 +262,35 @@ p {
 }
 .menu_content p {
 	color: white;
-	font-size: 3.5vw;
+	font-size: 4.5vw;
+	line-height: 5vw;
 	font-weight: bold;
+}
+.menu_content .insta_icon img, .menu_content .fb_icon img  {
+	width: 9vw;
+	margin: 8vw 6vw 0 0;
+	height: auto;
+	vertical-align: middle;
+}
+.menu_content .insta_icon img {
+	width: 10vw;
+}
+.studio img {
+	height: 20vh;
+	width: auto;
+	margin-top: 3vh;
+}
+.studio a p {
+	display: none;
+}
+.studio i {
+	font-style: italic;
+}
+@media only screen and (min-aspect-ratio:3/4){
+	.menu_content p {/*tablet screen*/
+		font-size: 3vw;
+		line-height: 3.5vw;
+	}
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu {
@@ -270,7 +305,7 @@ p {
 	}
 	.menu_content {
 		width: 100%;
-		top: 40vh;
+		top: 30vh;
 	}
 	.menu_content h2 {
 		font-size: 18pt;
@@ -279,7 +314,7 @@ p {
 		font-size: 1.2vw;
 		line-height: 2vw;
 	}
-	.menu_content img {
+	.menu_content .insta_icon img, .menu_content .fb_icon img  {
 		width: 4vw;
 		margin: 2vw 1.5vw 0 0;
 		height: auto;
@@ -288,26 +323,21 @@ p {
 	.menu_content .insta_icon img {
 		width: 4.6vw;
 	}
-}
-.exit_icon {
-	float: right;
-	width: auto;
-	padding-top: 5.5vh;
-}
-.exit_icon img {
-	width: 10vw;
-}
-@media only screen and (min-aspect-ratio:3/4){
-	.exit_icon {/*tablet screen*/
-		padding-top: 10vh;
+	.studio a {
+		float: left;
 	}
-}
-@media only screen and (min-aspect-ratio:16/10) {
-	.exit_icon {/*wider screens*/
-		padding-top: 10.5vh;
+	.studio img, .studio a p {
+		width: 25vw;
+		height: auto;
+		margin: 1vw 2.5vw 0 0;
 	}
-	.exit_icon img {
-		width: 4vw;
+	.studio a p {
+		display: none;
+		font-size: 1.1vw;
+		line-height: 1.4vw;
+	}
+	.studio a:last-child img, .studio a:last-child p {
+		margin-right: 0;
 	}
 }
 
@@ -344,7 +374,7 @@ header .logo {/*position logo container*/
 }
 @media only screen and (min-aspect-ratio:3/4){
 	.menu_icon {/*tablet screen*/
-		padding-top: 10vh;
+		padding-top: 6vh;
 	}
 }
 /*header big screen*/
@@ -360,6 +390,9 @@ header .logo {/*position logo container*/
 	}
 	.menu_icon {
 		padding-top: 8.5vh;
+	}
+	.menu_open .menu_icon {
+		padding-top: 10.5vh;/*adjustment*/
 	}
 	.menu_icon img {
 		width: 4vw;

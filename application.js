@@ -17,6 +17,7 @@ var animation_on = false;
 var current_image;
 var dynamic_project = getParameterByName('project');//decide content of page based on url
 var dynamic_filter = getParameterByName('filter');
+var dynamic_menu = getParameterByName('menu');
 
 //loading sequence for home-page: after everything loads
 window.onload = function() {
@@ -69,7 +70,7 @@ $(document).ready(function() {
   $('header').on('click', '.menu_icon', function() {
     menu_view=true;
     $('.menu_open').fadeIn(300);//tint
-    $('.menu_icon').fadeOut(500);
+    $('header').find('.menu_icon').fadeOut(500);
     $('.menu_container').fadeIn(1000);//content
     //fade in menu items
   });
@@ -80,7 +81,7 @@ $(document).ready(function() {
         menu_view=false;
         $('.menu_container').fadeOut(300);
         $('.menu_open').fadeOut(500);
-        $('.menu_icon').fadeIn(1000);
+        $('header').find('.menu_icon').fadeIn(1000);
         $('.lightbox').fadeOut(500);
       }
     }
@@ -91,17 +92,17 @@ $(document).ready(function() {
 		}
   });
   //2.exit icon is clicked
-  $('.menu_container').on('click', '.exit_icon', function() {
+  $('.menu_container').on('click', '.menu_icon', function() {
     if(menu_view==true && metamenu_view==false){
       menu_view=false;
       $('.menu_container').fadeOut(300);
       $('.menu_open').fadeOut(500);
-      $('.menu_icon').fadeIn(1000);
+      $('header').find('.menu_icon').fadeIn(1000);
     }
 		else if (menu_view==true && metamenu_view==true) {
 			metamenu_view=false;
 			$('.menu_content').css('display', 'none');
-			$('.menu').fadeIn(1000);
+			$('.menu').fadeIn(1000);			
 		}
   });
 	//click item within this menu
@@ -109,6 +110,19 @@ $(document).ready(function() {
     metamenu_view=true;
     $('.menu').fadeOut(300);
     $('.'+$(this).attr('class')).fadeIn(2000);
+		//update url
+    window.history.pushState('','','?menu='+$(this).attr('class'));
+  });
+	//click on studio profiles toggles image & text
+	$('.studio').on('click', 'a', function() {
+    if($(this).find('p').css('display')=='none'){
+			$(this).find('p').fadeIn(1000);
+			$(this).find('img').css('display','none');
+		}
+		else {
+			$(this).find('p').css('display','none');
+			$(this).find('img').fadeIn(1000);
+		}
   });
 
 //hover-tags (only when in grid-view)
@@ -235,7 +249,7 @@ $(document).ready(function() {
                 $('.lightbox').on('click', '.exit', function(event) {
                   event.preventDefault();
                   $('.lightbox').fadeOut(500);
-                  $('.menu_icon').fadeIn(500);
+                  $('header').find('.menu_icon').fadeIn(500);
                   menu_view=false;
                 });
                 //insert content in counter & caption
@@ -429,5 +443,11 @@ $(document).ready(function() {
 		}
 		$('.subsubmenu').find('.'+dynamic_subcat).trigger('click');
   }
+
+	//check for extended url, and activate menu item
+	if(dynamic_menu != null) {
+		$('header').find('.menu_icon').trigger('click');
+		$('.menu').find('.'+dynamic_menu).trigger('click');
+	}
 
 });//full dom code
