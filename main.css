@@ -114,7 +114,6 @@ p {
 		left: 42vw;
 	}
 }
-
 /*dropdown menu and also lightbox*/
 .menu_open, .lightbox { /*tint*/
 	display: none;
