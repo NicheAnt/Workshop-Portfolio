@@ -102,7 +102,7 @@ $(document).ready(function() {
 		else if (menu_view==true && metamenu_view==true) {
 			metamenu_view=false;
 			$('.menu_content').css('display', 'none');
-			$('.menu').fadeIn(1000);			
+			$('.menu').fadeIn(1000);
 		}
   });
 	//click item within this menu
@@ -116,12 +116,19 @@ $(document).ready(function() {
 	//click on studio profiles toggles image & text
 	$('.studio').on('click', 'a', function() {
     if($(this).find('p').css('display')=='none'){
+			if(!mobile_view){
+				$(this).find('img').css('display','none');
+			}
+			else {
+				$('.studio').find('a p').css('display','none');
+			}
 			$(this).find('p').fadeIn(1000);
-			$(this).find('img').css('display','none');
 		}
 		else {
+			if(!mobile_view){
+				$(this).find('img').fadeIn(1000);
+			}
 			$(this).find('p').css('display','none');
-			$(this).find('img').fadeIn(1000);
 		}
   });
 

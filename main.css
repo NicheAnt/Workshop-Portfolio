@@ -278,10 +278,16 @@ p {
 .studio img {
 	height: 20vh;
 	width: auto;
-	margin-top: 3vh;
+	margin: 2.5vh 5vw 0 0;
 }
 .studio a p {
+	position: fixed;
+	top: 32vh;
+	right: 5vw;
+	width: 50vw;
 	display: none;
+	font-size: 3.5vw;
+	line-height: 3.8vw;
 }
 .studio i {
 	font-style: italic;
@@ -332,6 +338,7 @@ p {
 		margin: 1vw 2.5vw 0 0;
 	}
 	.studio a p {
+		position: static;
 		display: none;
 		font-size: 1.1vw;
 		line-height: 1.4vw;
