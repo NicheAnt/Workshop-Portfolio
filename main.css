@@ -89,6 +89,9 @@ a {
   -ms-user-select: none;
   user-select: none;
 }
+a:hover {
+	font-style: italic;
+}
 p {
 	text-decoration: none;
 }
@@ -240,7 +243,8 @@ p {
 }
 .menu ul li a {
 	text-decoration: none;
-	font-size: 6vw;
+	font-size: 4.5vw;
+	font-weight: bold;
 	letter-spacing: 0.6vw;
 	transition: color 0.5s;
 	color: grey;
@@ -257,14 +261,13 @@ p {
 }
 .menu_content h2 {
 	color: white;
-	font-size: 6vw;
+	font-size: 4.5vw;
 	font-weight: bold;
 }
 .menu_content p {
 	color: white;
 	font-size: 4.5vw;
 	line-height: 5vw;
-	font-weight: bold;
 }
 .menu_content .insta_icon img, .menu_content .fb_icon img  {
 	width: 9vw;
@@ -286,8 +289,8 @@ p {
 	right: 5vw;
 	width: 50vw;
 	display: none;
-	font-size: 3.5vw;
-	line-height: 3.8vw;
+	font-size: 3.8vw;
+	line-height: 4vw;
 }
 .studio i {
 	font-style: italic;
@@ -306,7 +309,7 @@ p {
 		padding: 4vh 0;
 	}
 	.menu ul li a {
-		font-size: 18pt;
+		font-size: 1.2vw;
 		letter-spacing: 0.1vw;
 	}
 	.menu_content {
@@ -314,7 +317,7 @@ p {
 		top: 30vh;
 	}
 	.menu_content h2 {
-		font-size: 18pt;
+		font-size: 1.2vw;
 	}
 	.menu_content p {
 		font-size: 1.2vw;
@@ -330,18 +333,27 @@ p {
 		width: 4.6vw;
 	}
 	.studio a {
-		float: left;
+		position: fixed;
+	}
+	.studio .profile_aditya {
+		left: 10vw;
+	}
+	.studio .profile_shamsher {
+		left: 37.5vw;
+	}
+	.studio .profile_anurag {
+		left: 65vw;
 	}
 	.studio img, .studio a p {
 		width: 25vw;
 		height: auto;
-		margin: 1vw 2.5vw 0 0;
 	}
 	.studio a p {
 		position: static;
 		display: none;
-		font-size: 1.1vw;
-		line-height: 1.4vw;
+		font-size: 1.2vw;
+		line-height: 1.5vw;
+		margin-top: 2vh;
 	}
 	.studio a:last-child img, .studio a:last-child p {
 		margin-right: 0;
@@ -438,9 +450,6 @@ header .logo {/*position logo container*/
 	letter-spacing: 0.1vw;
 	font-size: 1.35vw;
 	padding: 0 0.5vw 1vh 0.5vw;
-}
-.horizmenu ul li a:hover {
-	font-style: italic;
 }
 /*submenu text*/
 .submenu {
