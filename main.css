@@ -110,7 +110,7 @@ p {
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.coming-soon {
-		top: 60vh;
+		top: 50vh;
 		left: 42vw;
 	}
 }
