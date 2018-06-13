@@ -101,6 +101,20 @@ p {
 		font-size: 1.5vw;
 	}
 }
+/*coming soon text for films section*/
+.coming-soon {
+	display: none;
+	position: fixed;
+	top: 40vh;
+	left: 30vw;
+}
+@media only screen and (min-aspect-ratio:16/10){
+	.coming-soon {
+		top: 60vh;
+		left: 42vw;
+	}
+}
+
 /*dropdown menu and also lightbox*/
 .menu_open, .lightbox { /*tint*/
 	display: none;

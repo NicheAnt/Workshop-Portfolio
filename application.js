@@ -44,7 +44,8 @@ $(document).ready(function() {
     // options
       itemSelector : '.item',
       columnWidth : '.grid-sizer',
-      percentPosition: true
+      percentPosition: true,
+			horizontalOrder: true
     });
   });
 	//loading sequence: show images after they load
@@ -343,6 +344,13 @@ $(document).ready(function() {
 //shuffling with submenu
   $('.submenu').on('click', 'a', function(event) {
     event.preventDefault();
+		//putting coming soon message for films
+		if($(this).attr('class')=='film') {
+			$('.coming-soon').fadeIn(500);
+		}
+		else {
+			$('.coming-soon').css('display','none');
+		}
 		$('#project-page').html('');
     $(window).scrollTop(0);
     //remove all items from grid
