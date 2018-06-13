@@ -368,15 +368,15 @@ p {
 		left: 65vw;
 	}
 	.studio img, .studio a p {
+		position: static;
 		width: 25vw;
 		height: auto;
+		margin-top: 2vh;
 	}
 	.studio a p {
-		position: static;
 		display: none;
 		font-size: 1.2vw;
 		line-height: 1.5vw;
-		margin-top: 2vh;
 	}
 	.studio a:last-child img, .studio a:last-child p {
 		margin-right: 0;
