@@ -292,9 +292,19 @@ p {
 	width: 10vw;
 }
 .studio img {
+	position: fixed;
 	height: 20vh;
 	width: auto;
-	margin: 2.5vh 5vw 0 0;
+	left: 5vw;
+}
+.studio .profile_aditya img {
+	top: 32vh;
+}
+.studio .profile_shamsher img {
+	top: 54vh;
+}
+.studio .profile_anurag img{
+	top: 77vh;
 }
 .studio a p {
 	position: fixed;
