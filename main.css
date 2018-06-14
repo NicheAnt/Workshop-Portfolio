@@ -89,15 +89,12 @@ a {
   -ms-user-select: none;
   user-select: none;
 }
-a:hover {
-	font-style: italic;
-}
 p {
 	text-decoration: none;
 }
 @media only screen and (min-aspect-ratio:16/10){
 	h1 {
-		letter-spacing: 0.15vw;
+		letter-spacing: 0.1vw;
 		font-size: 1.5vw;
 	}
 }
@@ -161,11 +158,12 @@ p {
 }
 .lightbox .exit {
 	position: fixed;
-	top: 3.5vh;
+	z-index: 5;
+	top: 5.5vh;
 	right: 5vw;
 }
 .lightbox .exit img {
-	width: 4vw;
+	width: 10vw;
 }
 .lightbox .left-arrow, .lightbox .right-arrow {
 	position: fixed;
@@ -220,18 +218,18 @@ p {
 		width: auto;
 	}
 	.lightbox .exit {
-		top: 3.5vh;
-		right: 3vw;
+		top: 14.5vh;
+		right: 10vw;
 	}
 	.lightbox .exit img {
-		width: 2vw;
+		width: 2.5vw;
 	}
 	.lightbox .left-arrow {
-		left: 10vw;
+		left: 9vw;
 	}
 	.lightbox .right-arrow {
 		left: auto;
-		right: 10vw;
+		right: 9vw;
 	}
 	.lightbox .left-arrow img, .lightbox .right-arrow img {
 		width: 4vw;
@@ -284,7 +282,7 @@ p {
 }
 .menu_content .insta_icon img, .menu_content .fb_icon img  {
 	width: 9vw;
-	margin: 8vw 6vw 0 0;
+	margin: 8vw 4vw 0 0;
 	height: auto;
 	vertical-align: middle;
 }
@@ -326,7 +324,7 @@ p {
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.menu {
-		top: 32vh;/*position of links in big screens*/
+		top: 34vh;/*position of links in big screens*/
 	}
 	.menu ul li {/*padding list items*/
 		padding: 4vh 0;
@@ -337,7 +335,7 @@ p {
 	}
 	.menu_content {
 		width: 100%;
-		top: 30vh;
+		top: 34vh;
 	}
 	.menu_content h2 {
 		font-size: 1.2vw;
@@ -347,13 +345,13 @@ p {
 		line-height: 2vw;
 	}
 	.menu_content .insta_icon img, .menu_content .fb_icon img  {
-		width: 4vw;
-		margin: 2vw 1.5vw 0 0;
+		width: 2.5vw;
+		margin: 2vw 1vw 0 0;
 		height: auto;
 		vertical-align: middle;
 	}
 	.menu_content .insta_icon img {
-		width: 4.6vw;
+		width: 2.8vw;
 	}
 	.studio a {
 		position: fixed;
@@ -423,21 +421,21 @@ header .logo {/*position logo container*/
 @media only screen and (min-aspect-ratio:16/10){
 	header {
 		width: 80vw;
-		height: 28vh;
+		height: 32vh;
 		left: 10vw;
 		padding-top: 2vh;
 	}
 	.logo img{
-		width: 9vw;
+		width: 11vw;
 	}
 	.menu_icon {
-		padding-top: 8.5vh;
+		padding-top: 12.5vh;
 	}
 	.menu_open .menu_icon {
-		padding-top: 10.5vh;/*adjustment*/
+		padding-top: 14.6vh;/*adjustment*/
 	}
 	.menu_icon img {
-		width: 4vw;
+		width: 2.5vw;
 	}
 }
 /*sub-header basic*/
@@ -448,7 +446,9 @@ header .logo {/*position logo container*/
 	left: 0vw;
 	top: 18vh;
 	z-index: 2;
-	/*border: .1vh solid black;*/
+}
+.sub-header a:hover {
+	font-style: italic;
 }
 /*sub-header big screen*/
 @media only screen and (min-aspect-ratio:16/10){
@@ -456,7 +456,7 @@ header .logo {/*position logo container*/
 		height: 12vh;
 		width: 58vw;
 		left: 22vw;
-		top: 14vh;
+		top: 16.5vh;
 		z-index: 2;
 	}
 }
@@ -597,6 +597,9 @@ header .logo {/*position logo container*/
 	color: black;
 	min-height: 18vh;
 }
+#project-page a:hover {
+	font-style: italic;
+}
 @media only screen and (min-aspect-ratio:7/10){
 	#project-page .colp1 {
 		bottom: 8vw; /*sticky threshold for tablets*/
@@ -607,9 +610,11 @@ header .logo {/*position logo container*/
 	#project-page {
 		left: 10vw;
 		width: 80vw;
-		top: 32vh;
+		top: 35.5vh;
 	}
 	#project-page .colp1 {
+		position: -webkit-sticky;
+		position: sticky;
 		width: 26vw !important;
 		padding-right: 3%;
 		height: 50vw;
@@ -665,7 +670,7 @@ header .logo {/*position logo container*/
 /*grid big screen*/
 @media only screen and (min-aspect-ratio:16/10){
 	#grid {
-		top: 32vh;
+		top: 35.5vh;
 		left: 9.5vw;
 		width: 81vw;
 	}
@@ -703,53 +708,20 @@ header .logo {/*position logo container*/
 .loading {
 	z-index: 5;
 	position: fixed;
-	top: 7%;
-	left: 11%;
+	top: 3vh;
+	left: 2vw;
 }
-.loading-bar {
-  display: inline-block;
-  width: 0.5vw;
-	margin: 0 0.1vw;
-  height: 4.5vw;
-  border-radius: 0.5vw;
-  animation: loading 1s ease-in-out infinite;
+.loading img {
+	width: 23.5vw;
+	height: auto;
 }
 @media only screen and (min-aspect-ratio:16/10){
 	.loading {
-		top: 13%;
-		left: 13%;
+		top: 3vh;
+		left: 8.4vw;
 	}
-	.loading-bar {
-		width: 0.3vw;
-		margin: 0 0.05vw;
-	  height: 2.5vw;
+	.loading img {
+		width: 14.3vw;
 	}
-}
-.loading-bar:nth-child(1) {
-  background-color: #d3d3d3;
-  animation-delay: 0;
-}
-.loading-bar:nth-child(2) {
-  background-color: black;
-  animation-delay: 0.09s;
-}
-.loading-bar:nth-child(3) {
-  background-color: #d3d3d3;
-  animation-delay: .18s;
-}
-.loading-bar:nth-child(4) {
-  background-color: black;
-  animation-delay: .27s;
-}
-@keyframes loading {
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1, 2.2);
-  }
-  40% {
-    transform: scale(1);
-  }
 }
 /*loading animation over!*/

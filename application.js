@@ -30,6 +30,7 @@ window.onload = function() {
 
 //enabling js after page loads
 $(document).ready(function() {
+
   //object for hammer
   var lbox = document.getElementsByClassName("lightbox");
 
@@ -70,6 +71,8 @@ $(document).ready(function() {
   //open menu on click
   $('header').on('click', '.menu_icon', function() {
     menu_view=true;
+		//right now gif isn't made for tint menu
+		$('.loading').css('z-index', '-99');
     $('.menu_open').fadeIn(300);//tint
     $('.menu_container').fadeIn(1000);//content
     //fade in menu items
@@ -79,23 +82,27 @@ $(document).ready(function() {
     if(menu_view==true && metamenu_view==false){
       if(event.which==27){
         menu_view=false;
-        $('.menu_container').fadeOut(300);
-        $('.menu_open').fadeOut(500);
+				$('.loading').css('z-index', '5');
+        $('.menu_container').css('display','none');
+        $('.menu_open').css('display','none');
         $('.lightbox').fadeOut(500);
       }
     }
 		else if (menu_view==true && metamenu_view==true) {
-			metamenu_view=false;
-			$('.menu_content').css('display', 'none');
-			$('.menu').fadeIn(1000);
+			if(event.which==27){
+				metamenu_view=false;
+				$('.menu_content').css('display', 'none');
+				$('.menu').fadeIn(1000);
+			}
 		}
   });
   //2.exit icon is clicked
   $('.menu_container').on('click', '.menu_icon', function() {
     if(menu_view==true && metamenu_view==false){
       menu_view=false;
-      $('.menu_container').fadeOut(300);
-      $('.menu_open').fadeOut(500);
+			$('.loading').css('z-index', '5');
+			$('.menu_container').css('display','none');
+			$('.menu_open').css('display','none');
     }
 		else if (menu_view==true && metamenu_view==true) {
 			metamenu_view=false;
@@ -126,13 +133,13 @@ $(document).ready(function() {
 			$(this).find('p').fadeIn(1000);
 		}
 		else {
+			$(this).find('p').css('display','none');
 			if(!mobile_view){
 				$(this).find('img').fadeIn(1000);
 			}
 			else {//remove blur from images
 				$('.studio').find('img').css('filter','none');
 			}
-			$(this).find('p').css('display','none');
 		}
   });
 
@@ -254,13 +261,11 @@ $(document).ready(function() {
                 current_image = $(this);
                 menu_view=true;
                 $('.lightbox').fadeIn(500);//tint
-                $('.menu_icon').fadeOut(500);
                 $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
                 //exit icon is clicked
                 $('.lightbox').on('click', '.exit', function(event) {
                   event.preventDefault();
                   $('.lightbox').fadeOut(500);
-                  $('header').find('.menu_icon').fadeIn(500);
                   menu_view=false;
                 });
                 //insert content in counter & caption
