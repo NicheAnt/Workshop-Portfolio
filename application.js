@@ -71,7 +71,7 @@ $(document).ready(function() {
   //open menu on click
   $('header').on('click', '.menu_icon', function() {
     menu_view=true;
-		//right now gif isn't made for tint menu
+		//hide the gif for tint menu
 		$('.loading').css('z-index', '-99');
     $('.menu_open').fadeIn(300);//tint
     $('.menu_container').fadeIn(1000);//content
@@ -260,6 +260,9 @@ $(document).ready(function() {
                 event.preventDefault();
                 current_image = $(this);
                 menu_view=true;
+								//force hide the gif for tint menu
+								$('.loading').find('img').css('display','none');
+								//
                 $('.lightbox').fadeIn(500);//tint
                 $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
                 //exit icon is clicked
@@ -267,6 +270,8 @@ $(document).ready(function() {
                   event.preventDefault();
                   $('.lightbox').fadeOut(500);
                   menu_view=false;
+									//undo force hide of gif
+									$('.loading').find('img').fadeIn(2000);
                 });
                 //insert content in counter & caption
                 $('.counter').text($(".lightboximg").index($(this))+1+'/'+$(".lightboximg").length);
@@ -276,7 +281,7 @@ $(document).ready(function() {
                   if(!animation_on){
                     animation_on=true;
                     event.preventDefault();
-                    //alert('current index is: '+$(".lightboximg").index($(current_image)));
+                    //figure out the new image
                     if($(current_image).closest('figure').prev('.lightboxfig_active').length>0){
                       current_image=$(current_image).closest('figure').prev('.lightboxfig_active').find('img');
                       $('.counter').text($(".lightboximg").index($(current_image))+1+'/'+$(".lightboximg").length);
@@ -285,8 +290,9 @@ $(document).ready(function() {
                       current_image=$(".colp2").find('.lightboxfig_active:last').find('img');
                       $('.counter').text($(".lightboximg").length+'/'+$(".lightboximg").length);
                     }
+										//replace it in animation
                     $(".lightbox-target").animate({left: '90vw'}, 'slow', function() {
-                      $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
+											$('.lightbox-target').find('img').removeAttr("src").attr('src', $(current_image).attr('src'));
                       $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
                       $(".lightbox-target").css('left','-90vw');
                     });
