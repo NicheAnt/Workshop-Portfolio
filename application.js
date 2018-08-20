@@ -118,27 +118,30 @@ $(document).ready(function() {
 		//update url
     window.history.pushState('','','?menu='+$(this).attr('class'));
   });
-	//click on studio profiles toggles image & text
-	$('.studio').on('click', 'a', function() {
-    if($(this).find('p').css('display')=='none'){
-			if(!mobile_view){
-				$(this).find('img').css('display','none');
+	//non-selecting click on studio profiles toggles image & text
+	$('.studio').on('click', 'div', function() {
+		if(window.getSelection().toString().length<1){
+			//no text selection
+	    if($(this).find('p').css('display')=='none'){
+				if(!mobile_view){
+					$(this).find('img').css('display','none');
+				}
+				else {
+					$('.studio').find('div p').css('display','none');
+					//add blur to other images
+					$(this).find('img').css('filter','none');
+					$(this).siblings().find('img').css('filter','blur(3px)');
+				}
+				$(this).find('p').fadeIn(1000);
 			}
 			else {
-				$('.studio').find('a p').css('display','none');
-				//add blur to other images
-				$(this).find('img').css('filter','none');
-				$(this).siblings().find('img').css('filter','blur(3px)');
-			}
-			$(this).find('p').fadeIn(1000);
-		}
-		else {
-			$(this).find('p').css('display','none');
-			if(!mobile_view){
-				$(this).find('img').fadeIn(1000);
-			}
-			else {//remove blur from images
-				$('.studio').find('img').css('filter','none');
+				$(this).find('p').css('display','none');
+				if(!mobile_view){
+					$(this).find('img').fadeIn(1000);
+				}
+				else {//remove blur from images
+					$('.studio').find('img').css('filter','none');
+				}
 			}
 		}
   });

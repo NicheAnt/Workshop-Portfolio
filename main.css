@@ -71,6 +71,7 @@ body {
   background-color: white;
 	font-family: "gill_sans";
 	color: black;
+	overflow-x: hidden;
 }
 h1 {
 	color: black;
@@ -78,7 +79,7 @@ h1 {
 	font-size: 3.5vw;
 	line-height: normal;
 }
-a {
+a {/*disabling text select for links*/
 	text-decoration: none;
 	color: black;
 	outline: 0;
@@ -304,14 +305,10 @@ p {
 .studio .profile_anurag img{
 	top: 77vh;
 }
-.studio a {
-	-webkit-user-select: auto;
-	-khtml-user-select: auto;
-	-moz-user-select: auto;
-	-ms-user-select: auto;
-	user-select: auto;
+.studio div {
+	cursor: pointer;
 }
-.studio a p {
+.studio div p {
 	position: fixed;
 	top: 32vh;
 	right: 5vw;
@@ -323,10 +320,14 @@ p {
 .studio i {
 	font-style: italic;
 }
-@media only screen and (min-aspect-ratio:3/4){
-	.menu_content p {/*tablet screen*/
+@media only screen and (min-aspect-ratio:6/10){
+	.studio p {/*tablet screen*/
+		font-size: 3.5vw;
+		line-height: 4vw;
+	}
+	.studio div p {
 		font-size: 3vw;
-		line-height: 3.5vw;
+		line-height: 4vw;
 	}
 }
 @media only screen and (min-aspect-ratio:16/10){
@@ -360,7 +361,7 @@ p {
 	.menu_content .insta_icon img {
 		width: 2.8vw;
 	}
-	.studio a {
+	.studio div {
 		position: fixed;
 	}
 	.studio .profile_aditya {
@@ -372,18 +373,18 @@ p {
 	.studio .profile_anurag {
 		left: 65vw;
 	}
-	.studio img, .studio a p {
+	.studio img, .studio div p {
 		position: static;
 		width: 25vw;
 		height: auto;
 		margin-top: 2vh;
 	}
-	.studio a p {
+	.studio div p {
 		display: none;
 		font-size: 1.2vw;
 		line-height: 1.5vw;
 	}
-	.studio a:last-child img, .studio a:last-child p {
+	.studio div:last-child img, .studio div:last-child p {
 		margin-right: 0;
 	}
 }
