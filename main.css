@@ -304,6 +304,13 @@ p {
 .studio .profile_anurag img{
 	top: 77vh;
 }
+.studio a {
+	-webkit-user-select: auto;
+	-khtml-user-select: auto;
+	-moz-user-select: auto;
+	-ms-user-select: auto;
+	user-select: auto;
+}
 .studio a p {
 	position: fixed;
 	top: 32vh;
