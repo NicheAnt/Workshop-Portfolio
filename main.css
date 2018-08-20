@@ -563,7 +563,7 @@ header .logo {/*position logo container*/
 	width: 44vw !important;
 	position: -webkit-sticky;
 	position: sticky;
-	bottom: 40vw; /*sticky threshold for phones*/
+	top: 9vh; /*sticky threshold for phones*/
 	height: 120vw;
 	padding-right: 3%;
 	float: left;
@@ -595,7 +595,7 @@ header .logo {/*position logo container*/
 #project-page .colp1 p {
 	margin-top: 1vh;
 	font-size: 3vw;
-	line-height: 5vw;
+	line-height: 4.5vw;
 	color: black;
 }
 #project-page .colp2 p {
@@ -607,9 +607,13 @@ header .logo {/*position logo container*/
 #project-page a:hover {
 	font-style: italic;
 }
-@media only screen and (min-aspect-ratio:7/10){
+@media only screen and (min-aspect-ratio:6/10){
 	#project-page .colp1 {
-		bottom: 8vw; /*sticky threshold for tablets*/
+		top: 2vh; /*sticky threshold for tablets*/
+	}
+	#project-page .colp1 p, #project-page .colp2 p {
+		font-size: 2.5vw;
+		line-height: 4vw;
 	}
 }
 @media only screen and (min-aspect-ratio:16/10){
@@ -625,12 +629,12 @@ header .logo {/*position logo container*/
 		width: 26vw !important;
 		padding-right: 3%;
 		height: 50vw;
-		bottom: 4vw; /*sticky threshold for laptops & above*/
+		top: -12vh; /*sticky threshold for laptops & above*/
 	}
 	#project-page .colp1 p {
 		margin: 3vh 0 5vh 0vh;
 		font-size: 1.2vw;
-		line-height: 2vw;
+		line-height: 1.8vw;
 	}
 	#project-page .colp2 {
 		width: 64%;
