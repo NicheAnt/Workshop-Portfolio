@@ -317,7 +317,7 @@ $(document).ready(function() {
                       $('.counter').text('1/'+$(".lightboximg").length);
                     }
                     $(".lightbox-target").animate({left: '-90vw'}, 'slow', function() {
-                      $('.lightbox-target').find('img').attr('src', $(current_image).attr('src'));
+                      $('.lightbox-target').find('img').removeAttr("src").attr('src', $(current_image).attr('src'));
                       $('.lightbox-target').find('figcaption').text($(current_image).closest('figure').find('figcaption').text());
                       $(".lightbox-target").css('left','90vw');
                     });
